@@ -72,10 +72,9 @@ table .skiruns-mark{
 }
 td .lift-type{
     display: block;
-    background-image: url("images/lifts_types.png");
     background-size: 60%;
     margin-top: 5px;
-    background-repeat: no-repeat;
+    background: url("../../images/lifts_types.png") no-repeat;
 }
 td .handy{
     height: 45px;

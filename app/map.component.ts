@@ -3,12 +3,13 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {ModalDirective} from "./modal.directive";
+import {MenuDirective} from "./menu.directive";
 
 @Component({
   selector: 'map-lines',
   templateUrl:'app/blocks/map_lines.html',
   styleUrls: ['app/blocks/map_lines_style.css'],
-  directives: [ModalDirective]
+  directives: [ModalDirective, MenuDirective]
 })
 
 export class MapComponent {
