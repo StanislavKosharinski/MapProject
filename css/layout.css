@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+.wrapper {
+  width: 1024px;
+  height: 790px;
+  margin: 0 auto;
+}
+.bg-img {
+  box-sizing: border-box;
+  min-height: 100%;
+  /*padding-bottom: 90px;*/
+  background-image: url("/images/bg.jpg");
+  /*background-size: cover;*/
+  opacity: 0.2;
+}

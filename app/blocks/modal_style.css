@@ -1,0 +1,70 @@
+.modal {
+  min-height: 240px;
+  min-width: 200px;
+  max-width: 290px;
+  position: absolute;
+  top: 0;
+  word-break: break-all;
+  z-index: 2;
+}
+.modal > .modal-img {
+  position: relative;
+  background-color: rgba(206, 205, 205, 1);
+  background-image: url("https://res.oastatic.com/v3/default/gallery.png");
+  background-position: center;
+  height: 100px;
+}
+.modal > .modal-text{
+  position: relative;
+  min-height: 140px;
+  background-color: rgba(206, 205, 205, 1);
+}
+.modal ul{
+  text-align: center;
+  list-style: none;
+  padding: 5px;
+  font-family: Arial;
+}
+.modal ul span{
+  display: block;
+  padding-top: 5px;
+  color: grey;
+  font-size: 13px;
+  padding-right: 5px;
+}
+  .modal ul span:first-child{
+    padding-top: 0px;
+  }
+.modal ul li{
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid;
+  border-color: rgba(137, 128, 130, 0.29);
+  border-bottom-right-radius: 1px;
+  font-size: 14px;
+}
+  .modal ul li:last-child{
+    border-bottom: 0px;
+  }
+.btn-close{
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  font-size: 25px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.btn-close:hover{
+  opacity: 1;
+}
+.arrow-left{
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #CECDCD;
+  margin: -10px;
+  left: 0;
+  transform: rotate(135deg);
+  z-index: 1;
+}
