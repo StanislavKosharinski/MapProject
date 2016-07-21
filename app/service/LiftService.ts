@@ -11,7 +11,7 @@ export class LiftService{
 
     constructor(private http:Http){}
 
-    getSlopeById(id:string){
+    getLiftById(id:string){
         return this.http.get(ApiCall.REST_API + "/api/lifts/" + id).map(response => response.json());
     }
 }

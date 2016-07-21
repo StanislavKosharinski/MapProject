@@ -1,0 +1,91 @@
+.menu-wrapper{
+    float: left;
+    display: inline-block;
+    background-color: #eeeeee;
+    width: 477px;
+    min-height: 790px;
+    overflow: hidden;
+}
+.menu-tabs{
+    height: 50px;
+    background-color: #bdbdbd;
+}
+.menu-tabs ul{
+    list-style: none;
+    height: inherit;
+}
+.menu-tabs ul li{
+    display: inline-block;
+    height: 35px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.menu-tabs ul li:hover{
+    background-color: #eeeeee;
+}
+.menu-tabs ul li:hover span{
+    font-weight: bold;
+}
+.menu-tabs ul li span{
+    font-size: 20px;
+}
+#lifts,
+#skiruns{
+    overflow: auto;
+    max-height: 740px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+table tr{
+    cursor: pointer;
+}
+table tr:hover{
+    opacity: 0.8;
+}
+table tr:first-child{
+    height: 50px;
+    background-color: rgb(242, 242, 242);
+}
+table tr td{
+    height: 50px;
+    text-align: center;
+}
+table tr td:nth-child(2n){
+    min-height: 50px;
+    max-width: 175px;
+    word-wrap: break-word;
+}
+table tr:nth-child(2n){
+    background-color: #bdbdbd;
+}
+table .skiruns-mark{
+    background-color: #e53935;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+td .lift-type{
+    display: block;
+    background-image: url("images/lifts_types.png");
+    background-size: 60%;
+    margin-top: 5px;
+    background-repeat: no-repeat;
+}
+td .handy{
+    height: 45px;
+    background-position: center -74px;
+}
+td .seat-outside{
+    height: 41px;
+    background-position: center -36px;
+}
+td .seat-inside{
+    height: 41px;
+    background-position: center 3px;
+}

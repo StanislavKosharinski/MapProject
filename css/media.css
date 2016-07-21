@@ -1,0 +1,25 @@
+@media screen and (max-width: 1366px){
+    body{
+        min-width: 0 !important;
+    }
+    .wrapper{
+        width: 951px !important;
+        overflow: hidden;
+    }
+    #lifts{
+        font-size: 14px;
+    }
+    .menu-wrapper{
+        width: 400px !important;
+    }
+    .handy{
+        background-position: center -63px !important;
+    }
+    .seat-outside{
+        height: 39px !important;
+        background-position: center -27px !important;
+    }
+    .seat-inside{
+        background-position: center 8px !important;
+    }
+}
