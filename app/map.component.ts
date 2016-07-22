@@ -18,15 +18,20 @@ export class MapComponent {
 
     constructor(){}
 
-    getSlope(id:string, event: MouseEvent){
+    getSlope(event: MouseEvent){
       this.modal.setModalPosition(event);
-      this.modal.getSlopeById(id);
+      this.modal.getSlopeById(this.getClickedElementId(event));
     }
 
-    getLift(id:string, event: MouseEvent){
+    getLift(event: MouseEvent){
       this.modal.setModalPosition(event);
-      this.modal.getLiftById(id);
+      this.modal.getLiftById(this.getClickedElementId(event));
     }
 
+    getClickedElementId(event: MouseEvent){
+        var target = event.target || event.srcElement || event.currentTarget;
+        var idAttr = target.attributes.id;
+        return idAttr.nodeValue;
+    }
 }
 
