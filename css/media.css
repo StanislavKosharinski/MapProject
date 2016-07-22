@@ -2,24 +2,26 @@
     body{
         min-width: 0 !important;
     }
-    .wrapper{
+    /*.wrapper{
         width: 951px !important;
         overflow: hidden;
-    }
+    }*/
     #lifts{
         font-size: 14px;
     }
-    .menu-wrapper{
+    /*.menu-wrapper{
         width: 400px !important;
-    }
+    }*/
     .handy{
-        background-position: center -63px !important;
+        height: 28px !important;
+        background-position: center -55px !important;
     }
     .seat-outside{
-        height: 39px !important;
-        background-position: center -27px !important;
+        height: 32px !important;
+        background-position: center -25px !important;
     }
     .seat-inside{
-        background-position: center 8px !important;
+        background-position: center 2px !important;
+        height: 31px !important;
     }
 }

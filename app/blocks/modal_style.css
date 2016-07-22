@@ -13,11 +13,13 @@
   background-image: url("https://res.oastatic.com/v3/default/gallery.png");
   background-position: center;
   height: 100px;
+  z-index: 2;
 }
 .modal > .modal-text{
   position: relative;
   min-height: 140px;
   background-color: rgba(206, 205, 205, 1);
+  z-index: 2;
 }
 .modal ul{
   text-align: center;
@@ -65,6 +67,7 @@
   background: #CECDCD;
   margin: -10px;
   left: 0;
+  top: 14px;
   transform: rotate(135deg);
   z-index: 1;
 }

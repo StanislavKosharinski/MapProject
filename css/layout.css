@@ -14,16 +14,18 @@ body{
   max-width: 1501px;
 }
 .wrapper{
-  width: 1024px;
+  /*width: 1024px;*/
   height: 790px;
   position: relative;
   display: inline-block;
+  /*special styles*/
+  width: 1351px;
 }
 .bg-img {
   box-sizing: border-box;
   min-height: 100%;
-  /*padding-bottom: 90px;*/
   background-image: url("/images/bg.jpg");
-  /*background-size: cover;*/
   opacity: 0.2;
+  /*special styles*/
+  margin-left: 325px;
 }
