@@ -9,6 +9,11 @@
     position: absolute;
     top:0;
     width: 352px;
+    box-shadow: inset -4px 0px 32px 3px grey;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 .menu-tabs{
     height: 50px;
@@ -25,9 +30,17 @@
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 .menu-tabs ul li:hover{
     background-color: #eeeeee;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 .menu-tabs ul li:hover span{
     font-weight: bold;
@@ -49,9 +62,17 @@ table{
 }
 table tr{
     cursor: pointer;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 table tr:hover{
     opacity: 0.8;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 table tr:first-child{
     height: 50px;
@@ -63,7 +84,7 @@ table tr td{
 }
 table tr td:nth-child(2n){
     min-height: 50px;
-    max-width: 175px;
+    max-width: 165px;
     word-wrap: break-word;
 }
 table tr:nth-child(2n){

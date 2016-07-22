@@ -17,11 +17,11 @@
         background-position: center -55px !important;
     }
     .seat-outside{
-        height: 32px !important;
-        background-position: center -25px !important;
+        height: 31px !important;
+        background-position: center -24px !important;
     }
     .seat-inside{
-        background-position: center 2px !important;
+        background-position: center 4px !important;
         height: 31px !important;
     }
 }
