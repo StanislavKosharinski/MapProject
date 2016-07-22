@@ -1,7 +1,7 @@
 /**
  * Created by strukov on 7/19/16.
  */
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild, OnInit} from "@angular/core";
 import {ModalDirective} from "./modal.directive";
 import {MenuDirective} from "./menu.directive";
 
@@ -12,11 +12,20 @@ import {MenuDirective} from "./menu.directive";
   directives: [ModalDirective, MenuDirective]
 })
 
-export class MapComponent {
+export class MapComponent implements OnInit{
+
 
     @ViewChild('modal') modal :ModalDirective;
+    @ViewChild('left_menu') menu :MenuDirective;
 
-    constructor(){}
+    constructor(){
+
+    }
+
+    ngOnInit() {
+        this.getIdsFromMap();
+        this.menu.getSpecificIds(this.getIdsFromMap());
+    }
 
     getSlope(event: MouseEvent){
       this.modal.setModalPosition(event);
@@ -32,6 +41,15 @@ export class MapComponent {
         var target = event.target || event.srcElement || event.currentTarget;
         var idAttr = target.attributes.id;
         return idAttr.nodeValue;
+    }
+
+    getIdsFromMap(){
+        var paths = document.getElementsByTagName("path");
+        var tempIds = [];
+        for(var _i = 0; _i < paths.length; _i++){
+            tempIds.push(paths[_i].id);
+        }
+        return tempIds;
     }
 }
 

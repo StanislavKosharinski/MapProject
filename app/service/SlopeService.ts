@@ -11,4 +11,7 @@ export class SlopeService{
   getSlopeById(id:string){
     return this.http.get(ApiCall.REST_API + "/api/slopes/" + id).map(response => response.json());
   }
+  getSpecificSlopes(ids:Array<string>){
+    return this.http.get(ApiCall.REST_API + "/api/slopes/specific/" + ids).map(response => response.json());
+  }
 }

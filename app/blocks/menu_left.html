@@ -1,34 +1,40 @@
 <div class="menu-wrapper">
     <div class="menu-tabs">
-        <ul>
-            <li><span>9</span> Lifts</li>
-            <li><span>12</span> Skiruns</li>
-        </ul>
-        <div class="" id="lifts">
-            <table>
-                <tbody>
-                <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Length</th>
-                </tr>
-                <tr>
-                    <td><span class="lift-type handy"></span></td>
-                    <td><span class="skiruns-mark">B52</span>Tatrapoma H130 II.</td>
-                    <td>1029</td>
-                </tr>
-                <tr>
-                    <td><span class="lift-type seat-outside"></span></td>
-                    <td><span class="skiruns-mark">B52</span>Tatrapoma H130 II.</td>
-                    <td>1029</td>
-                </tr>
-                <tr>
-                    <td><span class="lift-type seat-inside"></span></td>
-                    <td><span class="skiruns-mark">B52</span>Tatrapoma H130 II.</td>
-                    <td>1029</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <tabs>
+            <tab [tabTitle]="'Lifts'">
+                <div class="" id="lifts">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr *ngFor="let lift of myLifts">
+                            <td><span class="skiruns-mark">{{lift.name}}</span></td>
+                            <td>{{lift.liftStatusEntity.status}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tab>
+            <tab [tabTitle]="'Slopes'">
+                <div class="" id="slopes">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Length</th>
+                        </tr>
+                        <tr *ngFor="let slope of mySlopes">
+                            <td><span class="skiruns-mark">{{slope.name}}</span></td>
+                            <td>{{slope.slopeStatusEntity.status}}</td>
+                            <td>{{slope.length}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tab>
+        </tabs>
     </div>
 </div>

@@ -14,4 +14,7 @@ export class LiftService{
     getLiftById(id:string){
         return this.http.get(ApiCall.REST_API + "/api/lifts/" + id).map(response => response.json());
     }
+    getSpecificLifts(ids:Array<string>){
+        return this.http.get(ApiCall.REST_API + "/api/lifts/specific/" + ids).map(response => response.json());
+    }
 }
