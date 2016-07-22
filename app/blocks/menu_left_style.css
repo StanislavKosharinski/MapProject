@@ -5,6 +5,10 @@
     width: 477px;
     min-height: 790px;
     overflow: hidden;
+    /*special styles*/
+    position: absolute;
+    top:0;
+    width: 352px;
 }
 .menu-tabs{
     height: 50px;
@@ -39,6 +43,8 @@
 table{
     width: 100%;
     border-collapse: collapse;
+    /*special styles*/
+    font-size: 13px;
 
 }
 table tr{
@@ -72,7 +78,7 @@ table .skiruns-mark{
 }
 td .lift-type{
     display: block;
-    background-size: 60%;
+    background-size: 60% !important;
     margin-top: 5px;
     background: url("../../images/lifts_types.png") no-repeat;
 }
