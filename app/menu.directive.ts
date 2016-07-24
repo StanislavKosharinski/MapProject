@@ -45,4 +45,5 @@ export class MenuDirective extends OnInit{
     getSpecificSlopes(){
         this.slopeService.getSpecificSlopes(this.myIds).subscribe(data => this.mySlopes = data);
     }
+
 }
