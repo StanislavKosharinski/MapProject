@@ -37,11 +37,10 @@ export class MapComponent implements OnInit{
       this.modal.getLiftById(this.getClickedElementId(event));
     }
 
-    getClickedElementId(event: MouseEvent){
-        // var target = event.target || event.srcElement || event.currentTarget;
-        // var idAttr = target.attributes.id;
-        // return idAttr.nodeValue;
-        return "HUI";
+    getClickedElementId(event: any){
+        var target = event.target || event.srcElement || event.currentTarget;
+        var idAttr = target.attributes.id;
+        return idAttr.nodeValue;
     }
 
     getIdsFromMap(){
