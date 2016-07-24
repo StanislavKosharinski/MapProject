@@ -38,9 +38,10 @@ export class MapComponent implements OnInit{
     }
 
     getClickedElementId(event: MouseEvent){
-        var target = event.target || event.srcElement || event.currentTarget;
-        var idAttr = target.attributes.id;
-        return idAttr.nodeValue;
+        // var target = event.target || event.srcElement || event.currentTarget;
+        // var idAttr = target.attributes.id;
+        // return idAttr.nodeValue;
+        return "HUI";
     }
 
     getIdsFromMap(){

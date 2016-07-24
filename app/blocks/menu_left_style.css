@@ -2,8 +2,8 @@
     float: left;
     display: inline-block;
     background-color: #eeeeee;
-    width: 477px;
-    min-height: 790px;
+    /*width: 477px;*/
+    min-height: 100%;
     overflow: hidden;
     /*special styles*/
     position: absolute;
@@ -15,39 +15,6 @@
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
-.menu-tabs{
-    height: 50px;
-    background-color: #bdbdbd;
-}
-.menu-tabs ul{
-    list-style: none;
-    height: inherit;
-}
-.menu-tabs ul li{
-    display: inline-block;
-    height: 35px;
-    padding-top: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-.menu-tabs ul li:hover{
-    background-color: #eeeeee;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-.menu-tabs ul li:hover span{
-    font-weight: bold;
-}
-.menu-tabs ul li span{
-    font-size: 20px;
-}
 #lifts,
 #skiruns{
     overflow: auto;
@@ -58,7 +25,6 @@ table{
     border-collapse: collapse;
     /*special styles*/
     font-size: 13px;
-
 }
 table tr{
     cursor: pointer;
@@ -81,11 +47,13 @@ table tr:first-child{
 table tr td{
     height: 50px;
     text-align: center;
+    max-width: 105px;
+    padding-left: 5px;
+    word-wrap: break-word;
 }
 table tr td:nth-child(2n){
     min-height: 50px;
     max-width: 165px;
-    word-wrap: break-word;
 }
 table tr:nth-child(2n){
     background-color: #bdbdbd;
