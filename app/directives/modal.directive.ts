@@ -1,9 +1,9 @@
 import {Component, Input, ViewChild, OnInit} from "@angular/core";
-import {Slope} from "./domain/Slope";
+import {Slope} from "../domain/Slope";
 import {HTTP_PROVIDERS} from "@angular/http";
-import {SlopeService} from "./service/SlopeService";
-import {LiftService} from "./service/LiftService";
-import {Lift} from "./domain/Lift";
+import {SlopeService} from "../service/SlopeService";
+import {LiftService} from "../service/LiftService";
+import {Lift} from "../domain/Lift";
 /**
  * Created by strukov on 7/19/16.
  */

@@ -2,17 +2,16 @@
  * Created by strukov on 7/21/16.
  */
 import {Component, OnInit,  forwardRef, Inject} from "@angular/core"
-import {Slope} from "./domain/Slope";
+import {Slope} from "../domain/Slope";
 import {HTTP_PROVIDERS} from "@angular/http";
-import {SlopeService} from "./service/SlopeService";
-import {LiftService} from "./service/LiftService";
-import {Lift} from "./domain/Lift";
+import {SlopeService} from "../service/SlopeService";
+import {LiftService} from "../service/LiftService";
+import {Lift} from "../domain/Lift";
 import {TabDirective} from "./tab.directive";
 import {TabsDirective} from "./tabs.directive";
 import {ModalDirective} from "./modal.directive";
-import {MapComponent} from "./map.component";
-import {ClickedElementListener} from "./ClickedElementListener";
-declare var $ :any;
+import {MapComponent} from "../map.component";
+import {ClickedElementListener} from "../utils/ClickedElementListener";
 
 @Component({
     selector: 'left-menu',

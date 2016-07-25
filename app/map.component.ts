@@ -2,9 +2,9 @@
  * Created by strukov on 7/19/16.
  */
 import {Component, ViewChild, OnInit} from "@angular/core";
-import {ModalDirective} from "./modal.directive";
-import {MenuDirective} from "./menu.directive";
-import {ClickedElementListener} from "./ClickedElementListener";
+import {ModalDirective} from "./directives/modal.directive";
+import {MenuDirective} from "./directives/menu.directive";
+import {ClickedElementListener} from "./utils/ClickedElementListener";
 
 @Component({
   selector: 'map-lines',
