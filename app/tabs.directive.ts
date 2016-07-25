@@ -2,7 +2,7 @@
  * Created by strukov on 7/22/16.
  */
 import { Component, ContentChildren, QueryList, AfterContentInit } from '@angular/core';
-import {TabDirective} from "./TabDirective";
+import {TabDirective} from "./tab.directive";
 
 @Component({
     selector: 'tabs',

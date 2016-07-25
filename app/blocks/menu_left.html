@@ -11,7 +11,7 @@
                             <th>Status</th>
                         </tr>
                         <tr *ngFor="let lift of myLifts">
-                            <td><span class="skiruns-mark">{{lift.name}}</span></td>
+                            <td><span class="skiruns-mark" [attr.id]="lift.id" (click)="getLiftModal($event)">{{lift.name}}</span></td>
                             <td>{{lift.liftStatusEntity.status}}</td>
                         </tr>
                         </tbody>
@@ -28,7 +28,7 @@
                             <th>Length</th>
                         </tr>
                         <tr *ngFor="let slope of mySlopes">
-                            <td><span class="skiruns-mark">{{slope.name}}</span></td>
+                            <td><span class="skiruns-mark" [attr.id]="slope.id">{{slope.name}}</span></td>
                             <td>{{slope.slopeStatusEntity.status}}</td>
                             <td>{{slope.length}}</td>
                         </tr>

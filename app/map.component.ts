@@ -24,6 +24,7 @@ export class MapComponent implements OnInit{
 
     ngOnInit() {
         this.getIdsFromMap();
+        this.getMapDocument();
         this.menu.getSpecificIds(this.getIdsFromMap());
     }
 
@@ -37,7 +38,7 @@ export class MapComponent implements OnInit{
       this.modal.getLiftById(this.getClickedElementId(event));
     }
 
-    getClickedElementId(event: any){
+    private getClickedElementId(event: any){
         var target = event.target || event.srcElement || event.currentTarget;
         var idAttr = target.attributes.id;
         return idAttr.nodeValue;
@@ -51,5 +52,8 @@ export class MapComponent implements OnInit{
         }
         return tempIds;
     }
-}
 
+    getMapDocument(){
+        return document.getElementsByTagName("path");
+    }
+}

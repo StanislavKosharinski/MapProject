@@ -1,22 +1,24 @@
 /**
  * Created by strukov on 7/21/16.
  */
-import {Component, OnInit} from "@angular/core"
+import {Component, OnInit,  forwardRef, Inject} from "@angular/core"
 import {Slope} from "./domain/Slope";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeService} from "./service/SlopeService";
 import {LiftService} from "./service/LiftService";
 import {Lift} from "./domain/Lift";
-import {TabDirective} from "./TabDirective";
-import {TabsDirective} from "./TabsDirective";
+import {TabDirective} from "./tab.directive";
+import {TabsDirective} from "./tabs.directive";
+import {ModalDirective} from "./modal.directive";
+import {MapComponent} from "./map.component";
+declare var $ :any;
 
 @Component({
     selector: 'left-menu',
     templateUrl: 'app/blocks/menu_left.html',
     styleUrls: ['app/blocks/menu_left_style.css'],
     providers: [SlopeService, LiftService, HTTP_PROVIDERS],
-    directives:[TabDirective, TabsDirective]
-
+    directives:[TabDirective, TabsDirective, ModalDirective]
 })
 
 export class MenuDirective extends OnInit{
@@ -25,8 +27,8 @@ export class MenuDirective extends OnInit{
     mySlopes: Array<Slope>;
     myIds: Array<string>;
 
-
-    constructor(private slopeService:SlopeService, private liftService:LiftService){
+    constructor(private slopeService:SlopeService, private liftService:LiftService,
+                @Inject(forwardRef(() => MapComponent)) private map:MapComponent){
         super();
     }
 
@@ -39,11 +41,47 @@ export class MenuDirective extends OnInit{
         this.myIds = ids;
     }
 
-    getSpecificLifts(){
+    private getSpecificLifts(){
         this.liftService.getSpecificLifts(this.myIds).subscribe(data => this.myLifts= data);
     }
-    getSpecificSlopes(){
+
+    private getSpecificSlopes(){
         this.slopeService.getSpecificSlopes(this.myIds).subscribe(data => this.mySlopes = data);
     }
 
+    getClickedElementId(event: any){
+        var target = event.target || event.srcElement || event.currentTarget;
+        var idAttr = target.attributes.id;
+        return idAttr.nodeValue;
+    }
+
+    getLiftModal(event: MouseEvent){
+        var menuItem = document.getElementById(this.getClickedElementId(event));
+        for(var i = 0; i < this.map.getIdsFromMap().length; i++){
+            if(this.map.getIdsFromMap()[i] == menuItem.id) {
+                var mapItem = this.map.getMapDocument().item(i);
+                console.log(mapItem);
+                // var coordinates = mapItem.getBoundingClientRect();
+                var coordinates = mapItem.getAttribute('d');
+
+                var mapItemLeftPattern = /\S+(?=,)/;
+
+                var mapItemTopPattern = /(?=.*),.*/;
+                var mapItemTopPattern2 = /[^,;]+/;
+
+
+                var mapItemTopFirstRegExp = coordinates.match(mapItemTopPattern).toString();
+                var mapItemTop = mapItemTopFirstRegExp.match(mapItemTopPattern2);
+                var mapItemLeft = coordinates.match(mapItemLeftPattern);
+
+                console.log('Left: ' + mapItemLeft);
+                console.log('Top: ' + mapItemTop);
+
+                this.map.modal.elementX = mapItemLeft;
+                this.map.modal.elementY = mapItemTop;
+
+                this.map.modal.getLiftById(menuItem.id);
+            }
+        }
+    }
 }
