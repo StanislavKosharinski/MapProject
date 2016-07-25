@@ -28,7 +28,7 @@
                             <th>Length</th>
                         </tr>
                         <tr *ngFor="let slope of mySlopes">
-                            <td><span class="skiruns-mark" [attr.id]="slope.id">{{slope.name}}</span></td>
+                            <td><span class="skiruns-mark" [attr.id]="slope.id" (click)="getSlopeModal($event)">{{slope.name}}</span></td>
                             <td>{{slope.slopeStatusEntity.status}}</td>
                             <td>{{slope.length}}</td>
                         </tr>

@@ -4,6 +4,7 @@
 import {Component, ViewChild, OnInit} from "@angular/core";
 import {ModalDirective} from "./modal.directive";
 import {MenuDirective} from "./menu.directive";
+import {ClickedElementListener} from "./ClickedElementListener";
 
 @Component({
   selector: 'map-lines',
@@ -12,14 +13,14 @@ import {MenuDirective} from "./menu.directive";
   directives: [ModalDirective, MenuDirective]
 })
 
-export class MapComponent implements OnInit{
+export class MapComponent extends ClickedElementListener implements OnInit{
 
 
     @ViewChild('modal') modal :ModalDirective;
     @ViewChild('left_menu') menu :MenuDirective;
 
     constructor(){
-
+        super();
     }
 
     ngOnInit() {
@@ -36,12 +37,6 @@ export class MapComponent implements OnInit{
     getLift(event: MouseEvent){
       this.modal.setModalPosition(event);
       this.modal.getLiftById(this.getClickedElementId(event));
-    }
-
-    private getClickedElementId(event: any){
-        var target = event.target || event.srcElement || event.currentTarget;
-        var idAttr = target.attributes.id;
-        return idAttr.nodeValue;
     }
 
     getIdsFromMap(){

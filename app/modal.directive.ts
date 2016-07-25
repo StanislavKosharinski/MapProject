@@ -41,7 +41,7 @@ export class ModalDirective{
     }
 
     setModalPosition(event:MouseEvent) {
-        this.elementX = event.pageX;
+        this.elementX = event.pageX - 352;
         this.elementY = event.pageY;
     }
 

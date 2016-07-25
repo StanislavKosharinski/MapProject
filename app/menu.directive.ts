@@ -11,6 +11,7 @@ import {TabDirective} from "./tab.directive";
 import {TabsDirective} from "./tabs.directive";
 import {ModalDirective} from "./modal.directive";
 import {MapComponent} from "./map.component";
+import {ClickedElementListener} from "./ClickedElementListener";
 declare var $ :any;
 
 @Component({
@@ -21,7 +22,7 @@ declare var $ :any;
     directives:[TabDirective, TabsDirective, ModalDirective]
 })
 
-export class MenuDirective extends OnInit{
+export class MenuDirective extends ClickedElementListener implements OnInit{
 
     myLifts: Array<Lift>;
     mySlopes: Array<Slope>;
@@ -49,39 +50,41 @@ export class MenuDirective extends OnInit{
         this.slopeService.getSpecificSlopes(this.myIds).subscribe(data => this.mySlopes = data);
     }
 
-    getClickedElementId(event: any){
-        var target = event.target || event.srcElement || event.currentTarget;
-        var idAttr = target.attributes.id;
-        return idAttr.nodeValue;
-    }
 
     getLiftModal(event: MouseEvent){
+        this.map.modal.getLiftById(this.getModal(event).id);
+    }
+
+    getSlopeModal(event: MouseEvent){
+        this.map.modal.getSlopeById(this.getModal(event).id);
+    }
+
+
+    private getModal(event: MouseEvent){
         var menuItem = document.getElementById(this.getClickedElementId(event));
         for(var i = 0; i < this.map.getIdsFromMap().length; i++){
             if(this.map.getIdsFromMap()[i] == menuItem.id) {
                 var mapItem = this.map.getMapDocument().item(i);
                 console.log(mapItem);
-                // var coordinates = mapItem.getBoundingClientRect();
                 var coordinates = mapItem.getAttribute('d');
 
                 var mapItemLeftPattern = /\S+(?=,)/;
 
                 var mapItemTopPattern = /(?=.*),.*/;
-                var mapItemTopPattern2 = /[^,;]+/;
+                var mapItemTopPattern2 = /[^,]+/;
 
 
                 var mapItemTopFirstRegExp = coordinates.match(mapItemTopPattern).toString();
-                var mapItemTop = mapItemTopFirstRegExp.match(mapItemTopPattern2);
-                var mapItemLeft = coordinates.match(mapItemLeftPattern);
+                var mapItemTop :any= mapItemTopFirstRegExp.match(mapItemTopPattern2);
+                var mapItemLeft :any= coordinates.match(mapItemLeftPattern);
 
                 console.log('Left: ' + mapItemLeft);
                 console.log('Top: ' + mapItemTop);
 
-                this.map.modal.elementX = mapItemLeft;
-                this.map.modal.elementY = mapItemTop;
-
-                this.map.modal.getLiftById(menuItem.id);
+                this.map.modal.elementX = mapItemLeft - 20;
+                this.map.modal.elementY = mapItemTop -20;
             }
         }
+        return menuItem;
     }
 }
