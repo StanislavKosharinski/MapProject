@@ -16,7 +16,7 @@
     transition: all 0.3s ease-out;
 }
 .menu-items li:hover{
-    background-color: #eeeeee;
+    background-color: rgb(242, 242, 242);
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -26,5 +26,5 @@
     font-size: 20px;
 }
 .active{
-    background-color: #eeeeee;
+    background-color: rgb(242, 242, 242);
 }
