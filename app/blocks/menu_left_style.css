@@ -2,8 +2,7 @@
     float: left;
     display: inline-block;
     background-color: #eeeeee;
-    /*width: 477px;*/
-    min-height: 100%;
+    height: calc(100% + 158px);
     overflow: hidden;
     /*special styles*/
     position: absolute;
