@@ -29,15 +29,11 @@ export class MapComponent extends ClickedElementListener implements OnInit{
         this.menu.getSpecificIds(this.getIdsFromMap());
     }
 
-    getSlope(event: MouseEvent){
-      this.modal.setModalPosition(event);
-      this.modal.getSlopeById(this.getClickedElementId(event));
+    getItem(event: MouseEvent, item:string){
+        this.modal.setModalPosition(event);
+        this.modal.getItemById(this.getClickedElementId(event), item);
     }
 
-    getLift(event: MouseEvent){
-      this.modal.setModalPosition(event);
-      this.modal.getLiftById(this.getClickedElementId(event));
-    }
 
     getIdsFromMap(){
         var paths = document.getElementsByTagName("path");

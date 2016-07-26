@@ -33,29 +33,21 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
     }
 
     ngOnInit() {
-        this.getSpecificLifts();
-        this.getSpecificSlopes();
+        this.getSpecificItems();
     }
 
     getSpecificIds(ids:Array<string>){
         this.myIds = ids;
     }
 
-    private getSpecificLifts(){
+    private getSpecificItems(){
         this.liftService.getSpecificLifts(this.myIds).subscribe(data => this.myLifts= data);
-    }
-
-    private getSpecificSlopes(){
         this.slopeService.getSpecificSlopes(this.myIds).subscribe(data => this.mySlopes = data);
+
     }
 
-
-    getLiftModal(event: MouseEvent){
-        this.map.modal.getLiftById(this.getModal(event).id);
-    }
-
-    getSlopeModal(event: MouseEvent){
-        this.map.modal.getSlopeById(this.getModal(event).id);
+    getItemModal(event: MouseEvent, item:string){
+        this.map.modal.getItemById(this.getModal(event).id, item);
     }
 
 

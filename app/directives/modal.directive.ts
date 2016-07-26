@@ -26,18 +26,19 @@ export class ModalDirective{
     constructor(private slopeService:SlopeService, private liftService:LiftService) {
     }
 
-
-    getSlopeById(id:string) {
+    
+    getItemById(id:string, item:string){
         this.modalOpen = true;
-        this.myLift = null;
-        this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data);
-    }
-
-    getLiftById(id:string) {
-        console.log("Clicked");
-        this.modalOpen = true;
-        this.mySlope = null;
-        this.liftService.getLiftById(id).subscribe(data => this.myLift = data);
+        switch (item){
+            case "SLOPE":
+                this.myLift = null;
+                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data);
+                break;
+            case "LIFT":
+                this.mySlope = null;
+                this.liftService.getLiftById(id).subscribe(data => this.myLift = data);
+                break;
+        }
     }
 
     setModalPosition(event:MouseEvent) {
