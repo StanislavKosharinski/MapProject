@@ -12,6 +12,7 @@ import {TabsDirective} from "./tabs.directive";
 import {ModalDirective} from "./modal.directive";
 import {MapComponent} from "../map.component";
 import {ClickedElementListener} from "../utils/ClickedElementListener";
+import {ItemType} from "../enums/ItemType";
 
 @Component({
     selector: 'left-menu',
@@ -26,6 +27,8 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
     myLifts: Array<Lift>;
     mySlopes: Array<Slope>;
     myIds: Array<string>;
+
+    public itemType = ItemType;
 
     constructor(private slopeService:SlopeService, private liftService:LiftService,
                 @Inject(forwardRef(() => MapComponent)) private map:MapComponent){
@@ -46,7 +49,7 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     }
 
-    getItemModal(event: MouseEvent, item:string){
+    getItemModal(event: MouseEvent, item:ItemType){
         this.map.modal.getItemById(this.getModal(event).id, item);
     }
 

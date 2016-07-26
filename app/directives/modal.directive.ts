@@ -4,6 +4,7 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeService} from "../service/SlopeService";
 import {LiftService} from "../service/LiftService";
 import {Lift} from "../domain/Lift";
+import {ItemType} from "../enums/ItemType";
 /**
  * Created by strukov on 7/19/16.
  */
@@ -26,17 +27,17 @@ export class ModalDirective{
     constructor(private slopeService:SlopeService, private liftService:LiftService) {
     }
 
-    
-    getItemById(id:string, item:string){
+
+    getItemById(id:string, item:ItemType){
         this.modalOpen = true;
         switch (item){
-            case "SLOPE":
-                this.myLift = null;
-                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data);
-                break;
-            case "LIFT":
+            case ItemType.LIFT:
                 this.mySlope = null;
                 this.liftService.getLiftById(id).subscribe(data => this.myLift = data);
+                break;
+            case ItemType.SLOPE:
+                this.myLift = null;
+                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data);
                 break;
         }
     }

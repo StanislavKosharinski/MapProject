@@ -5,6 +5,7 @@ import {Component, ViewChild, OnInit} from "@angular/core";
 import {ModalDirective} from "./directives/modal.directive";
 import {MenuDirective} from "./directives/menu.directive";
 import {ClickedElementListener} from "./utils/ClickedElementListener";
+import {ItemType} from "./enums/ItemType";
 
 @Component({
   selector: 'map-lines',
@@ -18,6 +19,7 @@ export class MapComponent extends ClickedElementListener implements OnInit{
 
     @ViewChild('modal') modal :ModalDirective;
     @ViewChild('left_menu') menu :MenuDirective;
+    public itemType = ItemType;
 
     constructor(){
         super();
@@ -29,7 +31,7 @@ export class MapComponent extends ClickedElementListener implements OnInit{
         this.menu.getSpecificIds(this.getIdsFromMap());
     }
 
-    getItem(event: MouseEvent, item:string){
+    getItem(event: MouseEvent, item:ItemType){
         this.modal.setModalPosition(event);
         this.modal.getItemById(this.getClickedElementId(event), item);
     }
