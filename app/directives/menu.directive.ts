@@ -59,26 +59,29 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
         for(var i = 0; i < this.map.getIdsFromMap().length; i++){
             if(this.map.getIdsFromMap()[i] == menuItem.id) {
                 var mapItem = this.map.getMapDocument().item(i);
-                console.log(mapItem);
-                var coordinates = mapItem.getAttribute('d');
-
-                var mapItemLeftPattern = /\S+(?=,)/;
-
-                var mapItemTopPattern = /(?=.*),.*/;
-                var mapItemTopPattern2 = /[^,]+/;
-
-
-                var mapItemTopFirstRegExp = coordinates.match(mapItemTopPattern).toString();
-                var mapItemTop :any= mapItemTopFirstRegExp.match(mapItemTopPattern2);
-                var mapItemLeft :any= coordinates.match(mapItemLeftPattern);
-
-                console.log('Left: ' + mapItemLeft);
-                console.log('Top: ' + mapItemTop);
-
-                this.map.modal.elementX = mapItemLeft - 20;
-                this.map.modal.elementY = mapItemTop -20;
+                this.map.modal.elementX = this.getMapItemPosition(mapItem, ItemPosition.LEFT) - 20;
+                this.map.modal.elementY = this.getMapItemPosition(mapItem, ItemPosition.TOP) -20;
             }
         }
         return menuItem;
     }
+
+    private getMapItemPosition(mapItem:any, position:ItemPosition){
+        let coordinates = mapItem.getAttribute('d');
+        switch (position){
+            case ItemPosition.TOP:
+                let mapItemTopPattern = /(?=.*),.*/;
+                let mapItemTopPattern2 = /[^,]+/;
+                let mapItemTopFirstRegExp = coordinates.match(mapItemTopPattern).toString();
+                return mapItemTopFirstRegExp.match(mapItemTopPattern2);
+            case ItemPosition.LEFT:
+                let mapItemLeftPattern = /\S+(?=,)/;
+                return coordinates.match(mapItemLeftPattern);
+        }
+    }
+}
+
+enum ItemPosition{
+    TOP,
+    LEFT
 }
