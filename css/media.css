@@ -1,8 +1,0 @@
-@media screen and (min-width: 1507px){
-    body{
-        width: 1508px;
-    }
-    .menu-wrapper{
-        height: calc(100% + 205px) !important;
-    }
-}

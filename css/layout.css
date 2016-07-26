@@ -8,7 +8,8 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 body{
-  width: 1356px;
+  -moz-width: 1356px;
+  -webkit-width: 1356px;
 }
 .menu{
   height: 100%;
@@ -21,7 +22,8 @@ body{
   display: inline-block;
   height: 100%;
   width: calc(100% - 357px);
-  height: calc(100% + 158px);
+  height: -moz-calc(100% + 158px);
+  height: -webkit-calc(100% + 165px);
   margin-left: -4px;
 }
  .img img{
