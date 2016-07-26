@@ -26,6 +26,8 @@ body{
 }
  .img img{
    width: 100%;
+   position: absolute;
+   top: 0;
  }
 /*scrollbar*/
 ::-webkit-scrollbar {
