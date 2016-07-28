@@ -64,8 +64,8 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
         for(var i = 0; i < this.map.getIdsFromMap().length; i++){
             if(this.map.getIdsFromMap()[i] == menuItem.id) {
                 var mapItem = this.map.getMapDocument().item(i);
-                this.map.modal.elementX = this.getMapItemPosition(mapItem, ItemPosition.LEFT) - 20;
-                this.map.modal.elementY = this.getMapItemPosition(mapItem, ItemPosition.TOP) -20;
+                this.map.modal.elementX = this.getMapItemPosition(mapItem, ItemPosition.LEFT);
+                this.map.modal.elementY = this.getMapItemPosition(mapItem, ItemPosition.TOP) ;
             }
         }
         return menuItem;

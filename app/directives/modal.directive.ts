@@ -50,6 +50,5 @@ export class ModalDirective{
 
     onExit() {
         this.modalOpen = false;
-        console.log("Closed!");
     }
 }
