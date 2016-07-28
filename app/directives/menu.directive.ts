@@ -37,6 +37,7 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     ngOnInit() {
         this.getSpecificItems();
+        this.getMenuWidth();
     }
 
     getSpecificIds(ids:Array<string>){
@@ -51,6 +52,10 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     getItemModal(event: MouseEvent, item:ItemType){
         this.map.modal.getItemById(this.getModal(event).id, item);
+    }
+
+    getMenuWidth(){
+        return document.getElementById('menu').offsetWidth;
     }
 
 
