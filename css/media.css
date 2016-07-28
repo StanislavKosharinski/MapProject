@@ -1,0 +1,13 @@
+@media screen and (min-width: 1505px){
+    body{
+        width: 1505px;
+        height: 895px;
+    }
+    html{
+        background: grey;
+    }
+    .img{
+        background-size: 100%;
+        width: 1160px;
+    }
+}
