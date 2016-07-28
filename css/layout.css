@@ -4,12 +4,13 @@
 }
 html,
 body{
-  height: 100%;
+  height: 790px;
   font-family: Arial, Helvetica, sans-serif;
+  width: 1356px;
+  margin: 0 auto;
 }
 body{
-  -moz-width: 1356px;
-  -webkit-width: 1356px;
+  position: relative;
 }
 .menu{
   height: 100%;
@@ -18,13 +19,14 @@ body{
   overflow: auto;
 }
 .img{
-  position: relative;
   display: inline-block;
+  position: absolute;
   height: 100%;
-  width: calc(100% - 357px);
-  height: -moz-calc(100% + 158px);
-  height: -webkit-calc(100% + 165px);
+  width: 1022px;
   margin-left: -4px;
+  background-image: url("../images/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
  .img img{
    width: 100%;
