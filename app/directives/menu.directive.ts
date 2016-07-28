@@ -37,6 +37,7 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     ngOnInit() {
         this.getSpecificItems();
+        this.getMenuWidth();
     }
 
     getSpecificIds(ids:Array<string>){
@@ -53,14 +54,18 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
         this.map.modal.getItemById(this.getModal(event).id, item);
     }
 
+    getMenuWidth(){
+        return document.getElementById('menu').offsetWidth;
+    }
+
 
     private getModal(event: MouseEvent){
         var menuItem = document.getElementById(this.getClickedElementId(event));
         for(var i = 0; i < this.map.getIdsFromMap().length; i++){
             if(this.map.getIdsFromMap()[i] == menuItem.id) {
                 var mapItem = this.map.getMapDocument().item(i);
-                this.map.modal.elementX = this.getMapItemPosition(mapItem, ItemPosition.LEFT) - 20;
-                this.map.modal.elementY = this.getMapItemPosition(mapItem, ItemPosition.TOP) -20;
+                this.map.modal.elementX = this.getMapItemPosition(mapItem, ItemPosition.LEFT);
+                this.map.modal.elementY = this.getMapItemPosition(mapItem, ItemPosition.TOP) ;
             }
         }
         return menuItem;

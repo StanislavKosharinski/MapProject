@@ -1,10 +1,11 @@
-import {Component, Input, ViewChild, OnInit} from "@angular/core";
+import {Component, Input, ViewChild, OnInit, forwardRef, Inject} from "@angular/core";
 import {Slope} from "../domain/Slope";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeService} from "../service/SlopeService";
 import {LiftService} from "../service/LiftService";
 import {Lift} from "../domain/Lift";
 import {ItemType} from "../enums/ItemType";
+import {MapComponent} from "../map.component";
 /**
  * Created by strukov on 7/19/16.
  */
@@ -24,7 +25,7 @@ export class ModalDirective{
     myLift:Lift;
     modalOpen:boolean = false;
 
-    constructor(private slopeService:SlopeService, private liftService:LiftService) {
+    constructor(private slopeService:SlopeService, private liftService:LiftService, @Inject(forwardRef(() => MapComponent)) private map:MapComponent) {
     }
 
 
@@ -43,12 +44,11 @@ export class ModalDirective{
     }
 
     setModalPosition(event:MouseEvent) {
-        this.elementX = event.pageX - 352;
+        this.elementX = event.pageX - this.map.menu.getMenuWidth() ;
         this.elementY = event.pageY;
     }
 
     onExit() {
         this.modalOpen = false;
-        console.log("Closed!");
     }
 }
