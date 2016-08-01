@@ -26,12 +26,12 @@ export class MapComponent extends ClickedElementListener implements OnInit{
     }
 
     ngOnInit() {
-        this.getIdsFromMap();
         this.getMapDocument();
         this.menu.getSpecificIds(this.getIdsFromMap());
     }
 
     getItem(event: MouseEvent, item:ItemType){
+        this.modal.openModal();
         this.modal.setModalPosition(event);
         this.modal.getItemById(this.getClickedElementId(event), item);
     }

@@ -1,18 +1,18 @@
-<div class="modal" *ngIf="modalOpen==true" [style.top.px]="elementY" [style.left.px]="elementX">
+<div class="modal" id="modal_window" *ngIf="modalOpened" [style.top.px]="elementY" [style.left.px]="elementX">
     <div class="arrow-left">
         <i class="fa fa-circle gps_ring" aria-hidden="true"></i>
     </div>
     <div class="modal-img">
-        <span class="btn-close" (click)="onExit()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+        <span class="btn-close"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
     </div>
-    <div class="modal-text">
+    <div class="modal-text" >
         <ul *ngIf="mySlope">
             <span>Name</span><li>{{mySlope.name}}</li>
             <span>Status</span><li>{{mySlope.slopeStatusEntity.status}}</li>
             <span>Difficulty</span><li>{{mySlope.difficulty}}</li>
-            <span>Length</span><li>{{mySlope.length}}</li>
+            <span>Length</span><li>{{mySlope.length + 'M'}}</li>
         </ul>
-        <ul *ngIf="myLift">
+        <ul *ngIf="myLift" >
             <span>Name</span><li>{{myLift.name}}</li>
             <span>Type</span><li>{{myLift.type}}</li>
             <span>Location</span><li>{{myLift.location}}</li>

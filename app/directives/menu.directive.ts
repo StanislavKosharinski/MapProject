@@ -50,6 +50,7 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
     }
 
     getItemModal(event: MouseEvent, item:ItemType){
+        this.map.modal.openModal();
         this.map.modal.getItemById(this.getModal(event).id, item);
     }
 

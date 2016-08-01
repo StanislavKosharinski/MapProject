@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, OnInit, forwardRef, Inject} from "@angular/core";
+import {Component, Input, forwardRef, Inject} from "@angular/core";
 import {Slope} from "../domain/Slope";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeService} from "../service/SlopeService";
@@ -17,20 +17,18 @@ import {MapComponent} from "../map.component";
 })
 export class ModalDirective{
 
-
     @Input() elementX;
     @Input() elementY;
+    @Input() modalOpened:boolean = false;
 
     mySlope:Slope;
     myLift:Lift;
-    modalOpen:boolean = false;
 
     constructor(private slopeService:SlopeService, private liftService:LiftService, @Inject(forwardRef(() => MapComponent)) private map:MapComponent) {
     }
 
 
     getItemById(id:string, item:ItemType){
-        this.modalOpen = true;
         switch (item){
             case ItemType.LIFT:
                 this.mySlope = null;
@@ -48,7 +46,7 @@ export class ModalDirective{
         this.elementY = event.pageY;
     }
 
-    onExit() {
-        this.modalOpen = false;
+    openModal(){
+        this.modalOpened = true;
     }
 }
