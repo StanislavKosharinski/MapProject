@@ -6,6 +6,7 @@ import {LiftService} from "../service/LiftService";
 import {Lift} from "../domain/Lift";
 import {ItemType} from "../enums/ItemType";
 import {MapComponent} from "../map.component";
+import {ClickOutside} from "../utils/ClickOutside";
 /**
  * Created by strukov on 7/19/16.
  */
@@ -13,7 +14,8 @@ import {MapComponent} from "../map.component";
     selector: 'modal',
     templateUrl: 'app/blocks/modal.html',
     styleUrls: ['app/blocks/modal_style.css'],
-    providers: [SlopeService, LiftService, HTTP_PROVIDERS]
+    providers: [SlopeService, LiftService, HTTP_PROVIDERS],
+    directives:[ClickOutside]
 })
 export class ModalDirective{
 
@@ -48,5 +50,15 @@ export class ModalDirective{
 
     openModal(){
         this.modalOpened = true;
+    }
+
+    closeModal(){
+        if(!this.modalOpened)
+            return;
+        if(this.myLift||this.mySlope) {
+            this.myLift = null;
+            this.mySlope = null;
+            this.modalOpened = false;
+        }
     }
 }
