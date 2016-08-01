@@ -5,8 +5,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'tab',
-    templateUrl: '../../blocks/tab.html',
-    styleUrls:['../../blocks/tabs_style.css']
+    templateUrl: 'app/blocks/tab.html',
+    styleUrls:['app/blocks/tabs_style.css']
 })
 export class TabDirective {
     @Input('tabTitle') title: string;
