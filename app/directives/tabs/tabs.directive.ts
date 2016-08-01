@@ -6,8 +6,8 @@ import {TabDirective} from "./tab.directive";
 
 @Component({
     selector: 'tabs',
-    templateUrl: 'app/blocks/tabs.html',
-    styleUrls:['app/blocks/tabs_style.css']
+    templateUrl: '../../blocks/tabs.html',
+    styleUrls:['../../blocks/tabs_style.css']
 })
 export class TabsDirective implements AfterContentInit {
 

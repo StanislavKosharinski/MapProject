@@ -7,19 +7,18 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeService} from "../service/SlopeService";
 import {LiftService} from "../service/LiftService";
 import {Lift} from "../domain/Lift";
-import {TabDirective} from "./tab.directive";
-import {TabsDirective} from "./tabs.directive";
 import {ModalDirective} from "./modal.directive";
 import {MapComponent} from "../map.component";
 import {ClickedElementListener} from "../utils/ClickedElementListener";
 import {ItemType} from "../enums/ItemType";
+import {TABS_DIRECTIVES} from "./tabs/index";
 
 @Component({
     selector: 'left-menu',
     templateUrl: 'app/blocks/menu_left.html',
     styleUrls: ['app/blocks/menu_left_style.css'],
     providers: [SlopeService, LiftService, HTTP_PROVIDERS],
-    directives:[TabDirective, TabsDirective, ModalDirective]
+    directives:[TABS_DIRECTIVES, ModalDirective]
 })
 
 export class MenuDirective extends ClickedElementListener implements OnInit{
