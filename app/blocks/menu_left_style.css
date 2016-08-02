@@ -83,15 +83,12 @@ td .seat-inside{
     background-position: center 3px;
 }
 .refresh-buttons{
-    padding-top: 5px;
-    padding-bottom: 5px;
     text-align: center;
     overflow: hidden;
 }
 
 .refresh-buttons i{
     font-size: 25px;
-    background: #8080804d;
     padding: 10px;
     border-radius: 50%;
     padding-left: 12px;
@@ -114,6 +111,9 @@ td .seat-inside{
     background: transparent;
     cursor: pointer;
     outline: none;
+    position: absolute;
+    top: 0;
+    right: 15px;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
