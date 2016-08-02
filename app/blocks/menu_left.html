@@ -23,7 +23,10 @@
             </tab>
             <tab [tabTitle]="'Slopes'">
                 <div class="" id="slopes">
-                    <button (click)="getSpecificSlopes()">Update Slopes</button>
+                    <div class="refresh-buttons">
+                        <button (click)="getSpecificSlopes()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    </div>
+
                     <table>
                         <tbody>
                         <tr>
