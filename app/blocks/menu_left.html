@@ -4,6 +4,7 @@
         <tabs>
             <tab [tabTitle]="'Lifts'">
                 <div class="" id="lifts">
+                    <button (click)="getSpecificLifts()">Update Lifts</button>
                     <table>
                         <tbody>
                         <tr>
@@ -20,6 +21,7 @@
             </tab>
             <tab [tabTitle]="'Slopes'">
                 <div class="" id="slopes">
+                    <button (click)="getSpecificSlopes()">Update Slopes</button>
                     <table>
                         <tbody>
                         <tr>
@@ -30,7 +32,7 @@
                         <tr *ngFor="let slope of mySlopes">
                             <td><span class="skiruns-mark" [attr.id]="slope.id" (click)="getItemModal($event, itemType.SLOPE)">{{slope.name}}</span></td>
                             <td>{{slope.slopeStatusEntity.status}}</td>
-                            <td>{{slope.length}}</td>
+                            <td>{{slope.length + 'M'}}</td>
                         </tr>
                         </tbody>
                     </table>

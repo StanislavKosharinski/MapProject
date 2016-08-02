@@ -33,11 +33,9 @@ export class ModalDirective{
     getItemById(id:string, item:ItemType){
         switch (item){
             case ItemType.LIFT:
-                this.mySlope = null;
                 this.liftService.getLiftById(id).subscribe(data => this.myLift = data);
                 break;
             case ItemType.SLOPE:
-                this.myLift = null;
                 this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data);
                 break;
         }
@@ -50,6 +48,12 @@ export class ModalDirective{
 
     openModal(){
         this.modalOpened = true;
+    }
+
+    closeModalIfOpened(){
+        if(this.modalOpened){
+            this.closeModal();
+        }
     }
 
     closeModal(){

@@ -31,6 +31,7 @@ export class MapComponent extends ClickedElementListener implements OnInit{
     }
 
     getItem(event: MouseEvent, item:ItemType){
+        this.modal.closeModalIfOpened();
         this.modal.openModal();
         this.modal.setModalPosition(event);
         this.modal.getItemById(this.getClickedElementId(event), item);
