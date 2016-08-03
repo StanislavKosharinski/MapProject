@@ -27,7 +27,6 @@ export class MapComponent extends ClickedElementListener implements OnInit{
 
     ngOnInit() {
         this.getMapDocument();
-        this.menu.getSpecificIds(this.getIdsFromMap());
     }
 
     getItem(event: MouseEvent, item:ItemType){

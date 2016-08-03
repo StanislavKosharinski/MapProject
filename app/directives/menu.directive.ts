@@ -25,7 +25,7 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     myLifts: Array<Lift>;
     mySlopes: Array<Slope>;
-    myIds: Array<string>;
+    ids:Array<string>;
 
     public itemType = ItemType;
 
@@ -36,19 +36,25 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     ngOnInit() {
         this.getMenuWidth();
+        this.getSpecificIds();
+        this.getSpecificItems();
     }
 
-    getSpecificIds(ids:Array<string>){
-        this.myIds = ids;
+    getSpecificIds(){
+        this.ids = this.map.getIdsFromMap();
     }
+
+    getSpecificItems(){
+        this.slopeService.getSpecificSlopes(this.ids).subscribe(data => this.mySlopes = data);
+        this.liftService.getSpecificLifts(this.ids).subscribe(data => this.myLifts= data);
+    }
+
 
    getSpecificSlopes(){
-       console.log("Clicked on slopes tab");
-       this.slopeService.getSpecificSlopes(this.myIds).subscribe(data => this.mySlopes = data);
+       this.slopeService.getSpecificSlopes(this.ids).subscribe(data => this.mySlopes = data);
     }
     getSpecificLifts(){
-        console.log("Clicked on lifts tab");
-        this.liftService.getSpecificLifts(this.myIds).subscribe(data => this.myLifts= data);
+        this.liftService.getSpecificLifts(this.ids).subscribe(data => this.myLifts= data);
     }
 
     getItemModal(event: MouseEvent, item:ItemType){
