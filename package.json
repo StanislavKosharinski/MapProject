@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "clean": "rm -R dist",
-    "build": "npm run clean && webpack && webpack -p",
-    "start": "npm run build && webpack-dev-server --port 3000"
+    "build": "npm run clean && webpack",
+    "compress": "wepback -p",
+    "start-dev-compressed": "npm run build && npm run compress && webpack-dev-server --port 3000",
+    "start-prod-compressed": "npm run build ** npm run compress && webpack-dev-server --port 3000 --hot --host 0.0.0.0",
+    "start-build": "npm run build && webpack-dev-server --port 3000",
+    "start": "webpack-dev-server --port 3000"
   },
   "license": "ISC",
   "dependencies": {
