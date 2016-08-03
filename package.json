@@ -2,8 +2,9 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --port 3000"
+    "clean": "rm -R dist",
+    "build": "npm run clean && webpack && webpack -p",
+    "start": "npm run build && webpack-dev-server --port 3000"
   },
   "license": "ISC",
   "dependencies": {
