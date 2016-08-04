@@ -21,7 +21,7 @@ import {TABS_DIRECTIVES} from "./tabs/index";
     directives:[TABS_DIRECTIVES, ModalDirective]
 })
 
-export class MenuDirective extends ClickedElementListener implements OnInit{
+export class MenuDirective implements OnInit{
 
     myLifts: Array<Lift>;
     mySlopes: Array<Slope>;
@@ -31,7 +31,6 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
     constructor(private slopeService:SlopeService, private liftService:LiftService,
                 @Inject(forwardRef(() => MapComponent)) private map:MapComponent){
-        super();
     }
 
     ngOnInit() {
@@ -69,7 +68,7 @@ export class MenuDirective extends ClickedElementListener implements OnInit{
 
 
     private getModal(event: MouseEvent){
-        var menuItem = document.getElementById(this.getClickedElementId(event));
+        var menuItem = document.getElementById(ClickedElementListener.getClickedElementId(event));
         for(var i = 0; i < this.map.getIdsFromMap().length; i++){
             if(this.map.getIdsFromMap()[i] == menuItem.id) {
                 var mapItem = this.map.getMapDocument().item(i);

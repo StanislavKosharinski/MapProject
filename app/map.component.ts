@@ -14,7 +14,7 @@ import {ItemType} from "./enums/ItemType";
   directives: [ModalDirective, MenuDirective]
 })
 
-export class MapComponent extends ClickedElementListener implements OnInit{
+export class MapComponent  implements OnInit{
 
 
     @ViewChild('modal') modal :ModalDirective;
@@ -22,7 +22,6 @@ export class MapComponent extends ClickedElementListener implements OnInit{
     public itemType = ItemType;
 
     constructor(){
-        super();
     }
 
     ngOnInit() {
@@ -33,12 +32,12 @@ export class MapComponent extends ClickedElementListener implements OnInit{
         this.modal.closeModalIfOpened();
         this.modal.openModal();
         this.modal.setModalPosition(event);
-        this.modal.getItemById(this.getClickedElementId(event), item);
+        this.modal.getItemById(ClickedElementListener.getClickedElementId(event), item);
     }
 
 
     getIdsFromMap(){
-        var paths = document.getElementsByTagName("path");
+        var paths = this.getMapDocument();
         var tempIds = [];
         for(var _i = 0; _i < paths.length; _i++){
             tempIds.push(paths[_i].id);
@@ -46,7 +45,7 @@ export class MapComponent extends ClickedElementListener implements OnInit{
         return tempIds;
     }
 
-    getMapDocument(){
+    public getMapDocument(){
         return document.getElementsByTagName("path");
     }
 }
