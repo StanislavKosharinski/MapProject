@@ -18,5 +18,8 @@
             <span>Location</span><li>{{myLift.location}}</li>
             <span>Status</span><li>{{myLift.liftStatusEntity.status}}</li>
         </ul>
+        <ul *ngIf="errorMessage">
+            <span>Error!</span><li>ID not found...</li>
+        </ul>
     </div>
 </div>

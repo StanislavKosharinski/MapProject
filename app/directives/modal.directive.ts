@@ -23,6 +23,7 @@ export class ModalDirective{
     @Input() elementY;
     @Input() modalOpened:boolean = false;
 
+    errorMessage: string;
     mySlope:Slope;
     myLift:Lift;
 
@@ -33,10 +34,10 @@ export class ModalDirective{
     getItemById(id:string, item:ItemType){
         switch (item){
             case ItemType.LIFT:
-                this.liftService.getLiftById(id).subscribe(data => this.myLift = data);
+                this.liftService.getLiftById(id).subscribe(data => this.myLift = data, error =>  this.errorMessage = <any>error);
                 break;
             case ItemType.SLOPE:
-                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data);
+                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data, error =>  this.errorMessage = <any>error);
                 break;
         }
     }
@@ -62,6 +63,10 @@ export class ModalDirective{
         if(this.myLift||this.mySlope) {
             this.myLift = null;
             this.mySlope = null;
+            this.modalOpened = false;
+        }
+        if(this.errorMessage){
+            this.errorMessage = null;
             this.modalOpened = false;
         }
     }
