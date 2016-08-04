@@ -7,7 +7,7 @@
 2. Prepare app for usage: `npm install`
 
 ## Usage
-1. For start with changes and for first start: `npm run start-build`
-2. For start without changes: `npm run start`
-3. For compressed dev start with changes: `npm run start-dev-compressed`
-4. For compressed prod start with changes: `npm run start-prod-compressed`
+1. Build and start: `npm run start-build`
+2. For usual start: `npm run start`
+3. For compressed start with build: `npm run start-build-compressed`
+4. For compressed production mode start with build: `npm run start-prod-compressed`
