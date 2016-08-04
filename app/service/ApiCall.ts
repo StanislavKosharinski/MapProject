@@ -2,5 +2,5 @@
  * Created by strukov on 7/19/16.
  */
 export class ApiCall{
-  public static get REST_API(): string {return 'http://localhost:8080'}
+  public static get REST_API(): string {return 'http://89.221.208.196:8080/brno'}
 }
