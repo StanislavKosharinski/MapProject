@@ -6,6 +6,7 @@ import {ModalDirective} from "./directives/modal.directive";
 import {MenuDirective} from "./directives/menu.directive";
 import {ClickedElementListener} from "./utils/ClickedElementListener";
 import {ItemType} from "./enums/ItemType";
+declare var svgPanZoom:any;
 
 @Component({
   selector: 'map-lines',
@@ -26,6 +27,7 @@ export class MapComponent  implements OnInit{
 
     ngOnInit() {
         this.getMapDocument();
+        this.zoomMap();
     }
 
     getItem(event: MouseEvent, item:ItemType){
@@ -33,6 +35,26 @@ export class MapComponent  implements OnInit{
         this.modal.openModal();
         this.modal.setModalPosition(event);
         this.modal.getItemById(ClickedElementListener.getClickedElementId(event), item);
+    }
+
+    private zoomMap(){
+        svgPanZoom('#mapSvg',  {
+            viewportSelector: '.svg-pan-zoom_viewport'
+            , panEnabled: true
+            , controlIconsEnabled: true
+            , zoomEnabled: true
+            , dblClickZoomEnabled: false
+            , mouseWheelZoomEnabled: true
+            , preventMouseEventsDefault: true
+            , zoomScaleSensitivity: 0.2
+            , minZoom: 1
+            , maxZoom: 10
+            , fit: true
+            , contain: false
+            , center: true
+            , refreshRate: 'auto'
+        });
+        console.log(document.getElementById('mapSvg').getBoundingClientRect());
     }
 
 

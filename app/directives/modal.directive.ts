@@ -43,8 +43,9 @@ export class ModalDirective{
     }
 
     setModalPosition(event:MouseEvent) {
-        this.elementX = event.pageX - this.map.menu.getMenuWidth() ;
+        this.elementX = event.pageX - this.map.menu.getMenuWidth();
         this.elementY = event.pageY;
+        console.log(event.toString());
     }
 
     openModal(){
