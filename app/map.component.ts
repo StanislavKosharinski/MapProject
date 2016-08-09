@@ -37,26 +37,37 @@ export class MapComponent  implements OnInit{
         this.modal.getItemById(ClickedElementListener.getClickedElementId(event), item);
     }
 
-    private zoomMap(){
-        svgPanZoom('#mapSvg',  {
+    zoomMap(){
+        var mapItems = document.getElementById('mapItems');
+        var limitPan = function(oldPan, newPan){
+            var gutterWidth = 1024
+                , gutterHeight = 790
+                , sizes = this.getSizes()
+                , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
+                , rightLimit = sizes.width - gutterWidth - (sizes.viewBox.x * sizes.realZoom)
+                , topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight
+                , bottomLimit = sizes.height - gutterHeight - (sizes.viewBox.y * sizes.realZoom);
+            var customPan = {x:0,y:0};
+            customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x));
+            customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
+            return customPan
+        };
+        var svg = svgPanZoom('#mapSvg',  {
             viewportSelector: '.svg-pan-zoom_viewport'
-            , panEnabled: true
             , controlIconsEnabled: true
-            , zoomEnabled: true
             , dblClickZoomEnabled: false
-            , mouseWheelZoomEnabled: true
-            , preventMouseEventsDefault: true
             , zoomScaleSensitivity: 0.2
             , minZoom: 1
-            , maxZoom: 10
+            , maxZoom: 5
             , fit: true
-            , contain: false
             , center: true
-            , refreshRate: 'auto'
+            , beforePan:limitPan
+            , onZoom: function(){
+            }
+            ,onPan: function(){
+            }
         });
-        console.log(document.getElementById('mapSvg').getBoundingClientRect());
     }
-
 
     getIdsFromMap(){
         var paths = this.getMapDocument();
