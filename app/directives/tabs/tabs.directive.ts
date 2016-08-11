@@ -32,4 +32,10 @@ export class TabsDirective implements AfterContentInit {
         tab.active = true;
     }
 
+    getAllTabs(){
+        this.tabs.toArray().forEach(tab => tab.active = false);
+        return this.tabs.toArray();
+    }
+
+
 }

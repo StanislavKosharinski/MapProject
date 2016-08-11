@@ -10,9 +10,7 @@
 }
 .modal > .modal-img {
   position: relative;
-  background-color: rgba(206, 205, 205, 1);
-  background-image: url("https://res.oastatic.com/v3/default/gallery.png");
-  background-position: center;
+  background: rgba(206, 205, 205, 1) url("/images/modal_img.png") center;
   height: 100px;
   z-index: 2;
 }

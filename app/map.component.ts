@@ -27,18 +27,26 @@ export class MapComponent  implements OnInit{
 
     ngOnInit() {
         this.getMapDocument();
-        this.zoomMap();
+        this.implementZoomPan();
     }
 
-    getItem(event: MouseEvent, item:ItemType){
-        this.modal.closeModalIfOpened();
-        this.modal.openModal();
-        this.modal.setModalPosition(event);
-        this.modal.getItemById(ClickedElementListener.getClickedElementId(event), item);
+    openExpanded(event: MouseEvent, item:ItemType){
+        switch (item){
+            case ItemType.LIFT:
+                var mapLift = this.menu.myLifts.filter(item => item.id == ClickedElementListener.getClickedElementId(event))[0];
+                this.menu.selectedItem = mapLift;
+                this.menu.selectTabByTitle("Lifts");
+                break;
+            case ItemType.SLOPE:
+                var mapSlope = this.menu.mySlopes.filter(item => item.id == ClickedElementListener.getClickedElementId(event))[0];
+                this.menu.selectedItem = mapSlope;
+                this.menu.selectTabByTitle("Slopes");
+                break;
+        }
     }
 
-    zoomMap(){
-        var mapItems = document.getElementById('mapItems');
+    private implementZoomPan(){
+
         var limitPan = function(oldPan, newPan){
             var gutterWidth = 1024
                 , gutterHeight = 790
@@ -52,9 +60,8 @@ export class MapComponent  implements OnInit{
             customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
             return customPan
         };
-        var svg = svgPanZoom('#mapSvg',  {
-            viewportSelector: '.svg-pan-zoom_viewport'
-            , controlIconsEnabled: true
+        svgPanZoom('#mapSvg',  {
+            controlIconsEnabled: true
             , dblClickZoomEnabled: false
             , zoomScaleSensitivity: 0.2
             , minZoom: 1
@@ -62,10 +69,6 @@ export class MapComponent  implements OnInit{
             , fit: true
             , center: true
             , beforePan:limitPan
-            , onZoom: function(){
-            }
-            ,onPan: function(){
-            }
         });
     }
 

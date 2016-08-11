@@ -1,21 +1,46 @@
 <div id="menu" class="menu">
 <div class="menu-wrapper">
     <div class="menu-tabs">
-        <tabs>
+        <tabs #tabs>
             <div class="refresh-buttons">
-                <button (click)="getSpecificSlopes(); getSpecificLifts()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                <button (click)="getSpecificItems()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
             <tab [tabTitle]="'Lifts'">
                 <div class="" id="lifts">
                     <table>
-                        <tbody>
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Status</th>
                         </tr>
-                        <tr *ngFor="let lift of myLifts">
-                            <td><span class="skiruns-mark" [attr.id]="lift.id" (click)="getItemModal($event, itemType.LIFT)">{{lift.name}}</span></td>
+                        </thead>
+                        <tbody *ngFor="let lift of myLifts" [attr.id]="lift.id" [ngSwitch]="isSelectedItem(lift)" (click)="getExpanded(lift)">
+                        <tr>
+                            <td><span class="skiruns-mark">{{lift.name}}</span></td>
                             <td>{{lift.liftStatusEntity.status}}</td>
+                        </tr>
+                        <tr *ngSwitchCase="true">
+                            <td>
+                                <div>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Location</th>
+                                            <th>Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>{{lift.type}}</td>
+                                            <td>{{lift.location}}</td>
+                                            <td>{{lift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</td>
+                                        </tr>
+                                        <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -24,16 +49,38 @@
             <tab [tabTitle]="'Slopes'">
                 <div class="" id="slopes">
                     <table>
-                        <tbody>
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Status</th>
                             <th>Length</th>
                         </tr>
-                        <tr *ngFor="let slope of mySlopes">
-                            <td><span class="skiruns-mark" [attr.id]="slope.id" (click)="getItemModal($event, itemType.SLOPE)">{{slope.name}}</span></td>
+                        </thead>
+                        <tbody *ngFor="let slope of mySlopes" [attr.id]="slope.id" [ngSwitch]="isSelectedItem(slope)" (click)="getExpanded(slope)">
+                        <tr>
+                            <td><span class="skiruns-mark">{{slope.name}}</span></td>
                             <td>{{slope.slopeStatusEntity.status}}</td>
                             <td>{{slope.length + 'M'}}</td>
+                        </tr>
+                        <tr *ngSwitchCase="true">
+                            <td>
+                                <div>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Difficulty</th>
+                                            <th>Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>{{slope.difficulty}}</td>
+                                            <td>{{slope.slopeStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

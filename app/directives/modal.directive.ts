@@ -10,6 +10,7 @@ import {ClickOutside} from "../utils/ClickOutside";
 /**
  * Created by strukov on 7/19/16.
  */
+
 @Component({
     selector: 'modal',
     templateUrl: 'app/blocks/modal.html',
@@ -17,6 +18,9 @@ import {ClickOutside} from "../utils/ClickOutside";
     providers: [SlopeService, LiftService, HTTP_PROVIDERS],
     directives:[ClickOutside]
 })
+/**
+ * @deprecated Modal not supported any more, use left menu instead
+ */
 export class ModalDirective{
 
     @Input() elementX;
@@ -30,34 +34,53 @@ export class ModalDirective{
     constructor(private slopeService:SlopeService, private liftService:LiftService, @Inject(forwardRef(() => MapComponent)) private map:MapComponent) {
     }
 
-
+    /**
+     * @deprecated Modal not supported any more, use left menu instead
+     */
     getItemById(id:string, item:ItemType){
         switch (item){
             case ItemType.LIFT:
-                this.liftService.getLiftById(id).subscribe(data => this.myLift = data, error =>  this.errorMessage = <any>error);
+                this.liftService.getLiftById(id).subscribe(data => this.myLift = data,
+                    error =>  this.errorMessage = <any>error);
                 break;
             case ItemType.SLOPE:
-                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data, error =>  this.errorMessage = <any>error);
+                this.slopeService.getSlopeById(id).subscribe(data => this.mySlope = data,
+                    error =>  this.errorMessage = <any>error);
                 break;
         }
     }
-
+    /**
+     * @deprecated Modal not supported any more, use left menu instead
+     */
     setModalPosition(event:MouseEvent) {
         this.elementX = event.pageX - this.map.menu.getMenuWidth();
         this.elementY = event.pageY;
-        console.log(event.toString());
+        console.log(event);
     }
-
+    /**
+     * @deprecated Modal not supported any more, use left menu instead
+     */
+    setModalPositionOnZoom(top:any, left:any){
+        this.elementX = left + 5 + 'px';
+        this.elementY = top + 5 + 'px';
+    }
+    /**
+     * @deprecated Modal not supported any more, use left menu instead
+     */
     openModal(){
         this.modalOpened = true;
     }
-
+    /**
+     * @deprecated Modal not supported any more, use left menu instead
+     */
     closeModalIfOpened(){
         if(this.modalOpened){
             this.closeModal();
         }
     }
-
+    /**
+     * @deprecated Modal not supported any more, use left menu instead
+     */
     closeModal(){
         if(!this.modalOpened)
             return;
