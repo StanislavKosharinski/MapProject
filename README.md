@@ -2,9 +2,10 @@
 
 ## Installation
 1. Clone repo
-2. Install the webpack: `npm install webpack -g`
-3. Install the webpack-dev-server: `npm install webpack-dev-server -g`
-2. Prepare app for usage: `npm install`
+2. Install npm and nodejs
+3. Install the webpack: `npm install webpack -g`
+4. Install the webpack-dev-server: `npm install webpack-dev-server -g`
+5. Prepare app for usage: `npm install`
 
 ## Usage
 1. Build and start: `npm run start-build`
