@@ -14,6 +14,7 @@ import {ItemType} from "../enums/ItemType";
 import {TABS_DIRECTIVES} from "./tabs/index";
 import {TabDirective} from "./tabs/tab.directive";
 import {TabsDirective} from "./tabs/tabs.directive";
+import {TabType} from "../enums/TabType";
 
 @Component({
     selector: 'left-menu',
@@ -66,8 +67,8 @@ export class MenuDirective implements OnInit{
         this.selectedItem = item;
     }
 
-    selectTabByTitle(title:string){
-        this.tabs.getAllTabs().filter(tab=>tab.title === title)[0].active = true;
+    selectTabByTitle(tabType:TabType){
+        this.tabs.getAllTabs().filter(tab=>tab.title === tabType.title)[0].active = true;
     }
 
     /**

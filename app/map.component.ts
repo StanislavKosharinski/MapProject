@@ -6,6 +6,7 @@ import {ModalDirective} from "./directives/modal.directive";
 import {MenuDirective} from "./directives/menu.directive";
 import {ClickedElementListener} from "./utils/ClickedElementListener";
 import {ItemType} from "./enums/ItemType";
+import {TabType} from "./enums/TabType";
 declare var svgPanZoom:any;
 
 @Component({
@@ -35,12 +36,12 @@ export class MapComponent  implements OnInit{
             case ItemType.LIFT:
                 var mapLift = this.menu.myLifts.filter(item => item.id == ClickedElementListener.getClickedElementId(event))[0];
                 this.menu.selectedItem = mapLift;
-                this.menu.selectTabByTitle("Lifts");
+                this.menu.selectTabByTitle(TabType.Lifts);
                 break;
             case ItemType.SLOPE:
                 var mapSlope = this.menu.mySlopes.filter(item => item.id == ClickedElementListener.getClickedElementId(event))[0];
                 this.menu.selectedItem = mapSlope;
-                this.menu.selectTabByTitle("Slopes");
+                this.menu.selectTabByTitle(TabType.Slopes);
                 break;
         }
     }
