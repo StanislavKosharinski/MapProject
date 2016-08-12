@@ -28,13 +28,9 @@ export class MenuDirective implements OnInit {
     myLifts: Array<Lift>;
     mySlopes: Array<Slope>;
 
-    myLift: Lift;
-    mySlope: Slope;
-
     ids: Array<string>;
+
     selectedItem: any;
-    isExpanded: boolean = false;
-    tempItem: any;
 
     public itemType = ItemType;
 
@@ -66,5 +62,9 @@ export class MenuDirective implements OnInit {
 
     selectTabByTitle(tabType: TabType) {
         this.tabs.getAllTabs().filter(tab=>tab.title === tabType.title)[0].active = true;
+    }
+
+    getMenuWidth(){
+        return document.getElementById('menu').offsetWidth;
     }
 }

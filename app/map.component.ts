@@ -1,7 +1,7 @@
 /**
  * Created by strukov on 7/19/16.
  */
-import {Component, ViewChild, OnInit} from "@angular/core";
+import {Component, ViewChild, OnInit, Input} from "@angular/core";
 import {MenuDirective} from "./directives/menu.directive";
 import {ClickedElementListener} from "./utils/ClickedElementListener";
 import {ItemType} from "./enums/ItemType";
@@ -20,25 +20,37 @@ export class MapComponent  implements OnInit{
     @ViewChild('left_menu') menu :MenuDirective;
     public itemType = ItemType;
 
+    @Input() elementCx;
+    @Input() elementCy;
+    isClicked:boolean = false;
+
     constructor(){
     }
 
     ngOnInit() {
-        this.getMapDocument();
         this.implementZoomPan();
+    }
+
+    setModalPosition(event:MouseEvent) {
+        this.elementCx = event.clientX- this.menu.getMenuWidth();
+        this.elementCy = event.clientY;
+        this.isClicked = true;
+        console.log(event);
     }
 
     openExpanded(event: MouseEvent, item:ItemType){
         switch (item){
             case ItemType.LIFT:
-                var mapLift = this.menu.myLifts.filter(item => item.id == ClickedElementListener.getClickedElementId(event))[0];
-                this.menu.selectedItem = mapLift;
+                this.menu.selectedItem = this.menu.myLifts.filter(item =>
+                item.id == ClickedElementListener.getClickedElementId(event))[0];
                 this.menu.selectTabByTitle(TabType.Lifts);
+                this.setModalPosition(event);
                 break;
             case ItemType.SLOPE:
-                var mapSlope = this.menu.mySlopes.filter(item => item.id == ClickedElementListener.getClickedElementId(event))[0];
-                this.menu.selectedItem = mapSlope;
+                this.menu.selectedItem = this.menu.mySlopes.filter(item =>
+                item.id == ClickedElementListener.getClickedElementId(event))[0];
                 this.menu.selectTabByTitle(TabType.Slopes);
+                this.setModalPosition(event);
                 break;
         }
     }
@@ -58,28 +70,29 @@ export class MapComponent  implements OnInit{
             customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
             return customPan
         };
+        var menu = this.menu;
         svgPanZoom('#mapSvg',  {
-            controlIconsEnabled: true
+            viewportSelector: '.svg-pan-zoom_viewport'
+            , controlIconsEnabled: true
             , dblClickZoomEnabled: false
             , zoomScaleSensitivity: 0.2
             , minZoom: 1
             , maxZoom: 5
+            , eventsListenerElement: document.querySelector('#mapSvg .svg-pan-zoom_viewport')
             , fit: true
             , center: true
+            ,onZoom: function(){
+            }
             , beforePan:limitPan
         });
     }
 
-    getIdsFromMap(){
-        var paths = this.getMapDocument();
+    public getIdsFromMap(){
+        var paths = document.getElementsByTagName("path");
         var tempIds = [];
         for(var _i = 0; _i < paths.length; _i++){
             tempIds.push(paths[_i].id);
         }
         return tempIds;
-    }
-
-    public getMapDocument(){
-        return document.getElementsByTagName("path");
     }
 }
