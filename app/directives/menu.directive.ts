@@ -1,70 +1,65 @@
 /**
  * Created by strukov on 7/21/16.
  */
-import {Component, OnInit, forwardRef, Inject, ViewChild} from "@angular/core"
+import {Component, OnInit} from "@angular/core"
 import {Slope} from "../domain/Slope";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeService} from "../service/SlopeService";
 import {LiftService} from "../service/LiftService";
 import {Lift} from "../domain/Lift";
-import {MapComponent} from "../map.component";
 import {ItemType} from "../enums/ItemType";
-import {TabDirective} from "./tabs/tab.directive";
-import {TabsDirective} from "./tabs/tabs.directive";
-import {TabType} from "../enums/TabType";
 
 @Component({
     selector: 'left-menu',
     templateUrl: 'app/blocks/menu_left.html',
     styleUrls: ['app/blocks/menu_left_style.css'],
-    providers: [SlopeService, LiftService, HTTP_PROVIDERS],
-    directives:[TabDirective, TabsDirective]
+    providers: [SlopeService, LiftService, HTTP_PROVIDERS]
 })
 
 export class MenuDirective implements OnInit {
 
-    @ViewChild('tabs') tabs: TabsDirective;
+    myLift: Lift;
+    mySlope: Slope;
 
-    myLifts: Array<Lift>;
-    mySlopes: Array<Slope>;
-
-    ids: Array<string>;
-
-    selectedItem: any;
+    isOpen:boolean = false;
+    errorMessage: string;
 
     public itemType = ItemType;
 
-    constructor(private slopeService: SlopeService, private liftService: LiftService,
-                @Inject(forwardRef(() => MapComponent)) private map: MapComponent) {
+    constructor(private slopeService: SlopeService, private liftService: LiftService) {
     }
 
     ngOnInit() {
-        this.getSpecificIds();
-        this.getSpecificItems();
+
     }
 
-    getSpecificIds() {
-        this.ids = this.map.getIdsFromMap();
+    setSlopeById(id:string){
+        this.slopeService.getSlopeById(id).subscribe(slope => this.mySlope = slope,
+            error =>  this.errorMessage = <any>error);
+
+        this.isOpen = true;
+        this.myLift = null;
     }
 
-    getSpecificItems() {
-        this.slopeService.getSpecificSlopes(this.ids).subscribe(data => this.mySlopes = data);
-        this.liftService.getSpecificLifts(this.ids).subscribe(data => this.myLifts = data);
-    }
+    setLiftById(id:string){
+        this.liftService.getLiftById(id).subscribe(lift => this.myLift = lift,
+            error =>  this.errorMessage = <any>error);
 
-    isSelectedItem(item: any) {
-        return this.selectedItem === item;
-    }
-
-    getExpanded(item: any) {
-        this.selectedItem = item;
-    }
-
-    selectTabByTitle(tabType: TabType) {
-        this.tabs.getAllTabs().filter(tab=>tab.title === tabType.title)[0].active = true;
+        this.isOpen = true;
+        this.mySlope = null;
     }
 
     getMenuWidth(){
         return document.getElementById('menu').offsetWidth;
+    }
+
+    closeMenu(){
+        this.isOpen = false;
+        this.mySlope = null;
+        this.myLift = null;
+        if(this.errorMessage){
+            this.errorMessage = null;
+            this.isOpen = false;
+        }
     }
 }

@@ -3,9 +3,8 @@
  */
 import {Component, ViewChild, OnInit, Input} from "@angular/core";
 import {MenuDirective} from "./directives/menu.directive";
-import {ClickedElementListener} from "./utils/ClickedElementListener";
 import {ItemType} from "./enums/ItemType";
-import {TabType} from "./enums/TabType";
+import {ClickedElementListener} from "./utils/ClickedElementListener";
 declare var svgPanZoom:any;
 
 @Component({
@@ -38,19 +37,13 @@ export class MapComponent  implements OnInit{
         console.log(event);
     }
 
-    openExpanded(event: MouseEvent, item:ItemType){
+    openMenu(event: MouseEvent, item:ItemType){
         switch (item){
             case ItemType.LIFT:
-                this.menu.selectedItem = this.menu.myLifts.filter(item =>
-                item.id == ClickedElementListener.getClickedElementId(event))[0];
-                this.menu.selectTabByTitle(TabType.Lifts);
-                this.setModalPosition(event);
+                this.menu.setLiftById(ClickedElementListener.getClickedElementId(event));
                 break;
             case ItemType.SLOPE:
-                this.menu.selectedItem = this.menu.mySlopes.filter(item =>
-                item.id == ClickedElementListener.getClickedElementId(event))[0];
-                this.menu.selectTabByTitle(TabType.Slopes);
-                this.setModalPosition(event);
+                this.menu.setSlopeById(ClickedElementListener.getClickedElementId(event));
                 break;
         }
     }
@@ -70,7 +63,7 @@ export class MapComponent  implements OnInit{
             customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
             return customPan
         };
-        var menu = this.menu;
+
         svgPanZoom('#mapSvg',  {
             viewportSelector: '.svg-pan-zoom_viewport'
             , controlIconsEnabled: true
@@ -85,14 +78,5 @@ export class MapComponent  implements OnInit{
             }
             , beforePan:limitPan
         });
-    }
-
-    public getIdsFromMap(){
-        var paths = document.getElementsByTagName("path");
-        var tempIds = [];
-        for(var _i = 0; _i < paths.length; _i++){
-            tempIds.push(paths[_i].id);
-        }
-        return tempIds;
     }
 }

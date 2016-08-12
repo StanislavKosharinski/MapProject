@@ -1,93 +1,31 @@
-<div id="menu" class="menu">
-<div class="menu-wrapper">
-    <div class="menu-tabs">
-        <tabs #tabs>
-            <div class="refresh-buttons">
-                <button (click)="getSpecificItems()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-            </div>
-            <tab [tabTitle]="'Lifts'">
-                <div class="" id="lifts">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody *ngFor="let lift of myLifts" [attr.id]="lift.id" (click)="getExpanded(lift)">
-                        <tr>
-                            <td><span class="skiruns-mark">{{lift.name}}</span></td>
-                            <td>{{lift.liftStatusEntity.status}}</td>
-                        </tr>
+<div id="menu" class="menu" *ngIf="isOpen">
+    <div class="menu-wrapper">
+        <div class="menu-tabs">
+            <div class="modal" id="modal_window" *ngIf="isOpen">
+                <div class="modal-img">
+                    <span class="btn-close" (click)="closeMenu()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+                </div>
+                <div class="modal-text" >
+                    <ul *ngIf="mySlope">
+                        <span>Name</span><li>{{mySlope.name}}</li>
+                        <span>Status</span><li>{{mySlope.slopeStatusEntity.status}}</li>
+                        <span>Date</span><li>{{mySlope.slopeStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
+                        <span>Difficulty</span><li>{{mySlope.difficulty}}</li>
+                        <span>Length</span><li>{{mySlope.length + 'M'}}</li>
+                    </ul>
+                    <ul *ngIf="myLift">
+                        <span>Name</span><li>{{myLift.name}}</li>
+                        <span>Type</span><li>{{myLift.type}}</li>
+                        <span>Location</span><li>{{myLift.location}}</li>
+                        <span>Status</span><li>{{myLift.liftStatusEntity.status}}</li>
+                        <span>Date</span><li>{{myLift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
 
-                        <tr *ngIf="isSelectedItem(lift)">
-                            <td>
-                                <div>
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>Type</th>
-                                            <th>Location</th>
-                                            <th>Date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>{{lift.type}}</td>
-                                            <td>{{lift.location}}</td>
-                                            <td>{{lift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</td>
-                                        </tr>
-                                        <tr></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    </ul>
+                    <ul *ngIf="errorMessage">
+                        <span>Error!</span><li>No information received</li>
+                    </ul>
                 </div>
-            </tab>
-            <tab [tabTitle]="'Slopes'">
-                <div class="" id="slopes">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Length</th>
-                        </tr>
-                        </thead>
-                        <tbody *ngFor="let slope of mySlopes" [attr.id]="slope.id" (click)="getExpanded(slope)">
-                        <tr>
-                            <td><span class="skiruns-mark">{{slope.name}}</span></td>
-                            <td>{{slope.slopeStatusEntity.status}}</td>
-                            <td>{{slope.length + 'M'}}</td>
-                        </tr>
-                        <tr *ngIf="isSelectedItem(slope)">
-                            <td>
-                                <div>
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>Difficulty</th>
-                                            <th>Date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>{{slope.difficulty}}</td>
-                                            <td>{{slope.slopeStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </tab>
-        </tabs>
+            </div>
+        </div>
     </div>
 </div>
-    </div>
