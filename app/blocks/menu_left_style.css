@@ -1,86 +1,11 @@
 .menu-wrapper{
     float: left;
     display: inline-block;
-    background-color: #eeeeee;
     min-height: 100%;
     overflow: hidden;
-    /*special styles*/
     position: absolute;
     top:0;
     width: 352px;
-    box-shadow: inset -4px 0px 32px 3px grey;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-#lifts,
-#skiruns{
-    overflow: auto;
-    max-height: 740px;
-}
-table{
-    width: 100%;
-    border-collapse: collapse;
-    /*special styles*/
-    font-size: 13px;
-}
-table tr{
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-table tr:hover{
-    opacity: 0.8;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-table tr:first-child{
-    height: 50px;
-    background-color: rgb(242, 242, 242);
-}
-table tr td{
-    height: 50px;
-    text-align: center;
-    max-width: 105px;
-    padding-left: 5px;
-    word-wrap: break-word;
-}
-table tr td:nth-child(2n){
-    min-height: 50px;
-    max-width: 165px;
-}
-table tr:nth-child(2n){
-    background-color: #bdbdbd;
-}
-table .skiruns-mark{
-    background-color: #e53935;
-    display: inline-block;
-    padding: 5px;
-    border-radius: 6px;
-    margin-right: 5px;
-}
-td .lift-type{
-    display: block;
-    background-size: 60% !important;
-    margin-top: 5px;
-    background: url("../../images/lifts_types.png") no-repeat;
-}
-td .handy{
-    height: 45px;
-    background-position: center -74px;
-}
-td .seat-outside{
-    height: 41px;
-    background-position: center -36px;
-}
-td .seat-inside{
-    height: 41px;
-    background-position: center 3px;
 }
 .refresh-buttons{
     text-align: center;
@@ -128,10 +53,8 @@ td .seat-inside{
     transition: all 0.3s ease-out;
 }
 .modal {
-    min-height: 240px;
-    min-width: 200px;
-    max-width: 290px;
-    /*margin-left: 10px;*/
+    height: 100%;
+    width: 352px;
     position: absolute;
     top: 0;
     word-break: break-all;
@@ -140,12 +63,12 @@ td .seat-inside{
 .modal > .modal-img {
     position: relative;
     background: rgba(206, 205, 205, 1) url("/images/modal_img.png") center;
-    height: 100px;
+    height: 200px;
     z-index: 2;
 }
 .modal > .modal-text{
     position: relative;
-    min-height: 140px;
+    height: 100%;
     background-color: rgba(206, 205, 205, 1);
     z-index: 2;
 }
@@ -159,7 +82,7 @@ td .seat-inside{
     display: block;
     padding-top: 5px;
     color: grey;
-    font-size: 13px;
+    font-size: 15px;
     padding-right: 5px;
 }
 .modal ul span:first-child{
@@ -167,12 +90,12 @@ td .seat-inside{
 }
 .modal ul li{
     text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 0.5px solid;
     border-color: rgba(137, 128, 130, 0.29);
     border-bottom-right-radius: 1px;
-    font-size: 14px;
+    font-size: 15px;
 }
 .modal ul li:last-child{
     border-bottom: 0px;
@@ -187,22 +110,4 @@ td .seat-inside{
 }
 .btn-close:hover{
     opacity: 1;
-}
-.arrow-left{
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    /*background: #CECDCD;*/
-    /*margin: -10px;*/
-    left: 0;
-    top: 0;
-    /*transform: rotate(135deg);*/
-    z-index: 1;
-    text-align: center;
-    margin: -21px;
-}
-@-webkit-keyframes pulsate {
-    0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
-    50% {opacity: 0.5;}
-    100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
 }
