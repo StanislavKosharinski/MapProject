@@ -21,7 +21,7 @@
                         <span>Date</span><li>{{myLift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
 
                     </ul>
-                    <ul *ngIf="errorMessage">
+                    <ul *ngIf="isError">
                         <span>Error!</span><li>No information received</li>
                     </ul>
                 </div>
