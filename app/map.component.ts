@@ -38,10 +38,10 @@ export class MapComponent  implements OnInit{
         this.setMarkerPosition(event.layerX, event.layerY);
         switch (item){
             case ItemType.LIFT:
-                this.menu.setLiftById(ClickedElementListener.getClickedElementId(event));
+                this.menu.setItemById(ClickedElementListener.getClickedElementId(event), ItemType.LIFT);
                 break;
             case ItemType.SLOPE:
-                this.menu.setSlopeById(ClickedElementListener.getClickedElementId(event));
+                this.menu.setItemById(ClickedElementListener.getClickedElementId(event), ItemType.SLOPE);
                 break;
         }
     }

@@ -25,7 +25,7 @@ export class MenuDirective implements OnInit {
     mySlopes:Array<Slope>;
 
     isOpen:boolean = false;
-    errorMessage: string;
+    isError: boolean = false;
 
     public itemType = ItemType;
 
@@ -43,21 +43,37 @@ export class MenuDirective implements OnInit {
         this.liftService.getSpecificLifts(this.map.ids).subscribe(lifts => this.myLifts = lifts);
     }
 
-    setSlopeById(id:string){
-        this.myLift = null;
-        this.mySlope = this.mySlopes.filter(slope => slope.id === id)[0];
+
+    setItemById(id:string, item:ItemType){
         this.isOpen = true;
+        switch (item){
+            case ItemType.LIFT:
+                this.mySlope = null;
+                this.myLift = this.getItem(this.myLifts, id);
+                break;
+            case ItemType.SLOPE:
+                this.myLift = null;
+                this.mySlope = this.getItem(this.mySlopes, id);
+                break;
+        }
     }
 
-    setLiftById(id:string){
-        this.mySlope = null;
-        this.myLift = this.myLifts.filter(lift => lift.id === id)[0];
-        this.isOpen = true;
-
+    getItem(items:Array<any>, id:string){
+        let item = items.filter(x => x.id === id)[0];
+        if(!item)
+            this.isError = true;
+        else
+            return item;
     }
 
     closeMenu(){
         this.isOpen = false;
         this.map.markerAdded = false;
+        if(this.isError)
+            this.isError = false;
+        if(this.myLift)
+            this.myLift = null;
+        if(this.mySlope)
+            this.mySlope = null;
     }
 }
