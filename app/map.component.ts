@@ -8,10 +8,10 @@ import {ClickedElementListener} from "./utils/ClickedElementListener";
 declare var svgPanZoom:any;
 
 @Component({
-  selector: 'map-lines',
-  templateUrl:'app/blocks/map_lines.html',
-  styleUrls: ['app/blocks/map_lines_style.css'],
-  directives: [MenuDirective]
+    selector: 'map-lines',
+    templateUrl:'app/blocks/map_lines.html',
+    styleUrls: ['app/blocks/map_lines_style.css'],
+    directives: [MenuDirective]
 })
 
 export class MapComponent  implements OnInit{
@@ -22,12 +22,14 @@ export class MapComponent  implements OnInit{
     @Input() elementCx;
     @Input() elementCy;
     isClicked:boolean = false;
+    ids:Array<string>;
 
     constructor(){
     }
 
     ngOnInit() {
         this.implementZoomPan();
+        this.getIdsFromMap();
     }
 
     setModalPosition(event:MouseEvent) {
@@ -78,5 +80,15 @@ export class MapComponent  implements OnInit{
             }
             , beforePan:limitPan
         });
+    }
+
+    getIdsFromMap(){
+        var paths = document.getElementsByTagName("path");
+        var tempIds = [];
+        for(var _i = 0; _i < paths.length; _i++){
+            tempIds.push(paths[_i].id);
+        }
+        this.ids = tempIds;
+        return this.ids;
     }
 }

@@ -1,13 +1,14 @@
 /**
  * Created by strukov on 7/21/16.
  */
-import {Component, OnInit} from "@angular/core"
+import {Component, OnInit, forwardRef, Inject} from "@angular/core"
 import {Slope} from "../domain/Slope";
-import {HTTP_PROVIDERS} from "@angular/http";
-import {SlopeService} from "../service/SlopeService";
-import {LiftService} from "../service/LiftService";
 import {Lift} from "../domain/Lift";
 import {ItemType} from "../enums/ItemType";
+import {MapComponent} from "../map.component";
+import {HTTP_PROVIDERS} from "@angular/http";
+import {LiftService} from "../service/LiftService";
+import {SlopeService} from "../service/SlopeService";
 
 @Component({
     selector: 'left-menu',
@@ -20,33 +21,39 @@ export class MenuDirective implements OnInit {
 
     myLift: Lift;
     mySlope: Slope;
+    myLifts:Array<Lift>;
+    mySlopes:Array<Slope>;
 
     isOpen:boolean = false;
     errorMessage: string;
 
     public itemType = ItemType;
 
-    constructor(private slopeService: SlopeService, private liftService: LiftService) {
+    constructor(private slopeService: SlopeService, private liftService: LiftService,
+                @Inject(forwardRef(() => MapComponent)) private map: MapComponent) {
     }
 
     ngOnInit() {
+        this.getSpecificLiftsAndSlopes();
+    }
 
+
+    getSpecificLiftsAndSlopes(){
+        this.slopeService.getSpecificSlopes(this.map.ids).subscribe(slopes => this.mySlopes = slopes);
+        this.liftService.getSpecificLifts(this.map.ids).subscribe(lifts => this.myLifts = lifts);
     }
 
     setSlopeById(id:string){
-        this.slopeService.getSlopeById(id).subscribe(slope => this.mySlope = slope,
-            error =>  this.errorMessage = <any>error);
-
-        this.isOpen = true;
         this.myLift = null;
+        this.mySlope = this.mySlopes.filter(slope => slope.id === id)[0];
+        this.isOpen = true;
     }
 
     setLiftById(id:string){
-        this.liftService.getLiftById(id).subscribe(lift => this.myLift = lift,
-            error =>  this.errorMessage = <any>error);
-
-        this.isOpen = true;
         this.mySlope = null;
+        this.myLift = this.myLifts.filter(lift => lift.id === id)[0];
+        this.isOpen = true;
+
     }
 
     getMenuWidth(){
@@ -55,11 +62,5 @@ export class MenuDirective implements OnInit {
 
     closeMenu(){
         this.isOpen = false;
-        this.mySlope = null;
-        this.myLift = null;
-        if(this.errorMessage){
-            this.errorMessage = null;
-            this.isOpen = false;
-        }
     }
 }
