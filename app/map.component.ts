@@ -23,7 +23,7 @@ export class MapComponent  implements OnInit{
     @Input() elementCx;
     @Input() elementCy;
 
-    isClicked:boolean = false;
+    markerAdded:boolean = false;
     ids:Array<string>;
 
     constructor(){
@@ -91,7 +91,7 @@ export class MapComponent  implements OnInit{
         this.elementCx = svgMarker.x;
         this.elementCy = svgMarker.y;
 
-        this.isClicked = true;
+        this.markerAdded = true;
     }
 
     onMapClick(){

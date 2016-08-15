@@ -58,6 +58,6 @@ export class MenuDirective implements OnInit {
 
     closeMenu(){
         this.isOpen = false;
-        this.map.isClicked = false;
+        this.map.markerAdded = false;
     }
 }

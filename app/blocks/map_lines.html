@@ -180,8 +180,8 @@
            C 664.25,434.00 708.75,419.50 738.00,426.25
              757.75,428.25 759.19,423.12 762.25,423.00
              762.19,423.12 768.91,420.36 784.75,422.25" (click)="openMenu($event, itemType.SLOPE)" />
-    <g id="marker" *ngIf="isClicked">
-      <circle [attr.cx]="elementCx" [attr.cy]="elementCy" r="10" fill="black"/>
+    <g id="marker" *ngIf="markerAdded">
+      <image [attr.x]="elementCx - 10" [attr.y]="elementCy - 34" width="20px" height="34px" xlink:href="../../images/marker_green.png"/>
     </g>
 </g>
 </svg>
