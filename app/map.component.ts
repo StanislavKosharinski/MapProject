@@ -35,14 +35,13 @@ export class MapComponent  implements OnInit{
     }
 
     openMenu(event: MouseEvent, item:ItemType){
+        this.setMarkerPosition(event.layerX, event.layerY);
         switch (item){
             case ItemType.LIFT:
                 this.menu.setLiftById(ClickedElementListener.getClickedElementId(event));
-                this.setMarkerPosition(event.layerX, event.layerY);
                 break;
             case ItemType.SLOPE:
                 this.menu.setSlopeById(ClickedElementListener.getClickedElementId(event));
-                this.setMarkerPosition(event.layerX, event.layerY);
                 break;
         }
     }
