@@ -68,7 +68,7 @@ export class MapComponent  implements OnInit{
             , dblClickZoomEnabled: false
             , zoomScaleSensitivity: 0.2
             , minZoom: 1
-            , maxZoom: 5
+            , maxZoom: 1.5
             , eventsListenerElement: document.querySelector('#mapSvg .svg-pan-zoom_viewport')
             , fit: true
             , center: true
