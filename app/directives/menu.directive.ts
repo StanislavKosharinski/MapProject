@@ -56,11 +56,8 @@ export class MenuDirective implements OnInit {
 
     }
 
-    getMenuWidth(){
-        return document.getElementById('menu').offsetWidth;
-    }
-
     closeMenu(){
         this.isOpen = false;
+        this.map.isClicked = false;
     }
 }

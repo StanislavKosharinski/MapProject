@@ -6,6 +6,7 @@ import {MenuDirective} from "./directives/menu.directive";
 import {ItemType} from "./enums/ItemType";
 import {ClickedElementListener} from "./utils/ClickedElementListener";
 declare var svgPanZoom:any;
+declare var $:any;
 
 @Component({
     selector: 'map-lines',
@@ -21,6 +22,7 @@ export class MapComponent  implements OnInit{
 
     @Input() elementCx;
     @Input() elementCy;
+
     isClicked:boolean = false;
     ids:Array<string>;
 
@@ -32,20 +34,15 @@ export class MapComponent  implements OnInit{
         this.getIdsFromMap();
     }
 
-    setModalPosition(event:MouseEvent) {
-        this.elementCx = event.clientX- this.menu.getMenuWidth();
-        this.elementCy = event.clientY;
-        this.isClicked = true;
-        console.log(event);
-    }
-
     openMenu(event: MouseEvent, item:ItemType){
         switch (item){
             case ItemType.LIFT:
                 this.menu.setLiftById(ClickedElementListener.getClickedElementId(event));
+                this.setMarkerPosition(event.offsetX, event.offsetY);
                 break;
             case ItemType.SLOPE:
                 this.menu.setSlopeById(ClickedElementListener.getClickedElementId(event));
+                this.setMarkerPosition(event.offsetX, event.offsetY);
                 break;
         }
     }
@@ -76,10 +73,46 @@ export class MapComponent  implements OnInit{
             , eventsListenerElement: document.querySelector('#mapSvg .svg-pan-zoom_viewport')
             , fit: true
             , center: true
-            ,onZoom: function(){
+            , onZoom:function () {
+
             }
             , beforePan:limitPan
         });
+    }
+
+    private setMarkerPosition(x:any, y:any){
+        var svgMarker = $("svg")[0].createSVGPoint();
+
+        svgMarker.x = x;
+        svgMarker.y = y;
+
+        svgMarker = svgMarker.matrixTransform($(".svg-pan-zoom_viewport")[0].getCTM().inverse());
+
+        this.elementCx = svgMarker.x;
+        this.elementCy = svgMarker.y;
+
+        this.isClicked = true;
+    }
+
+    onMapClick(){
+        var element = document.getElementById('mapImage');
+        var flag = 0;
+        var menu = this.menu;
+        element.addEventListener("mousedown", function() {
+            flag = 0;
+        }, false);
+
+        element.addEventListener("mousemove", function() {
+            flag = 1;
+        }, false);
+
+        element.addEventListener("mouseup", function() {
+            if (flag === 0) {
+                menu.closeMenu();
+            } else if (flag === 1) {
+                return;
+            }
+        }, false);
     }
 
     getIdsFromMap(){
