@@ -8,6 +8,7 @@ import {ClickedElementListener} from "./utils/ClickedElementListener";
 declare var svgPanZoom:any;
 declare var $:any;
 
+//Map component
 @Component({
     selector: 'map-lines',
     templateUrl:'app/blocks/map_lines.html',
@@ -17,9 +18,11 @@ declare var $:any;
 
 export class MapComponent  implements OnInit{
 
+    //Getting child(Menu directive)
     @ViewChild('left_menu') menu :MenuDirective;
     public itemType = ItemType;
 
+    //Used for setting marker position
     @Input() elementCx;
     @Input() elementCy;
 
@@ -34,10 +37,13 @@ export class MapComponent  implements OnInit{
         this.getIdsFromMap();
     }
 
+    //Method for opening menu. It is sending request to menu method setItemById.
     openMenu(event: MouseEvent, item:ItemType){
+        //Passing layerX and layerY of mouse to setMarkerPosition method
         this.setMarkerPosition(event.layerX, event.layerY);
         switch (item){
             case ItemType.LIFT:
+                //Getting id by method getClickedElementId
                 this.menu.setItemById(ClickedElementListener.getClickedElementId(event), ItemType.LIFT);
                 break;
             case ItemType.SLOPE:
@@ -46,8 +52,10 @@ export class MapComponent  implements OnInit{
         }
     }
 
+    //Method using to implementing svg-pan-zoom library
     private implementZoomPan(){
 
+        //We are limiting pan by width and height
         var limitPan = function(oldPan, newPan){
             var gutterWidth = 1024
                 , gutterHeight = 790
@@ -62,9 +70,10 @@ export class MapComponent  implements OnInit{
             return customPan
         };
 
-        svgPanZoom('#mapSvg',  {
+        //Implementing svg-pan-zoom library
+        var zoomPan = svgPanZoom('#mapSvg',  {
             viewportSelector: '.svg-pan-zoom_viewport'
-            , controlIconsEnabled: true
+            , controlIconsEnabled: false
             , dblClickZoomEnabled: false
             , zoomScaleSensitivity: 0.2
             , minZoom: 1
@@ -77,14 +86,27 @@ export class MapComponent  implements OnInit{
             }
             , beforePan:limitPan
         });
+
+        document.getElementById('zoom-in').addEventListener('click', function(ev){
+            ev.preventDefault();
+            zoomPan.zoomIn();
+        });
+        document.getElementById('zoom-out').addEventListener('click', function(ev){
+            ev.preventDefault();
+            zoomPan.zoomOut();
+        });
+        document.getElementById('reset').addEventListener('click', function(ev){
+            ev.preventDefault();
+            zoomPan.resetZoom();
+        });
     }
 
+    //Setting the position of marker. JQuery applying the matrix of our svg to created SVG point
     private setMarkerPosition(x:any, y:any){
         var svgMarker = $("svg")[0].createSVGPoint();
 
         svgMarker.x = x;
         svgMarker.y = y;
-
         svgMarker = svgMarker.matrixTransform($(".svg-pan-zoom_viewport")[0].getCTM().inverse());
 
         this.elementCx = svgMarker.x;
@@ -92,7 +114,7 @@ export class MapComponent  implements OnInit{
 
         this.markerAdded = true;
     }
-
+    //Method to track difference between clicking and panning to close menu
     onMapClick(){
         var element = document.getElementById('mapImage');
         var flag = 0;
@@ -114,6 +136,7 @@ export class MapComponent  implements OnInit{
         }, false);
     }
 
+    //Getting ids of slopes and lifts from map. Used to sending request to API with these ids
     getIdsFromMap(){
         var paths = document.getElementsByTagName("path");
         var tempIds = [];

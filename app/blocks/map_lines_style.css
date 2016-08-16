@@ -12,6 +12,9 @@ path{
 path:hover{
     stroke-width: 6px;
 }
+.controls{
+    position: absolute;
+}
 @keyframes dash {
     to {
         stroke-dashoffset: 0;
