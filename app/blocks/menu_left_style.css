@@ -3,7 +3,6 @@
     display: inline-block;
     min-height: 100%;
     overflow: hidden;
-    position: absolute;
     top:0;
     width: 352px;
 }

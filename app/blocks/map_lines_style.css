@@ -10,7 +10,7 @@ path{
     animation: dash 5s linear forwards;
 }
 path:hover{
-    stroke-width: 6px;
+    stroke-width: 8px;
 }
 .controls{
     position: absolute;
@@ -26,7 +26,7 @@ path:hover{
     padding-right: 11px;
     border: 0px !important;
     outline: none;
-    background: rgba(128, 128, 128, 0.55);
+    background: rgba(255, 255, 255, 0.55);
     border-radius: 50%;
     cursor: pointer;
     margin-right: 10px;
@@ -40,7 +40,7 @@ path:hover{
     margin-right: 0px;
 }
 .controls button:active{
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(128, 128, 128, 0.55);
     -webkit-transition: all 0.1s linear;
     -moz-transition: all 0.1s linear;
     -o-transition: all 0.1s linear;

@@ -14,15 +14,17 @@ body{
 }
 .menu{
   height: 100%;
-  width: 352px;
   display: inline-block;
-  overflow: auto;
+  position: fixed;
+  z-index: 1;
+  width: 362px;
+  overflow: inherit;
 }
 .img{
   display: inline-block;
   position: absolute;
-  height: 790px;
-  width: 1022px;
+  height: 100%;
+  width: 100%;
   margin-left: -4px;
 
 }

@@ -57,8 +57,8 @@ export class MapComponent  implements OnInit{
 
         //We are limiting pan by width and height
         var limitPan = function(oldPan, newPan){
-            var gutterWidth = 1024
-                , gutterHeight = 790
+            var gutterWidth = 1578
+                , gutterHeight = 890
                 , sizes = this.getSizes()
                 , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
                 , rightLimit = sizes.width - gutterWidth - (sizes.viewBox.x * sizes.realZoom)
