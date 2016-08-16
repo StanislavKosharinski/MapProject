@@ -2,10 +2,11 @@
 
 ## Installation
 1. Clone repo
-2. Install npm and nodejs
-3. Install the webpack: `npm install webpack -g`
-4. Install the webpack-dev-server: `npm install webpack-dev-server -g`
-5. Prepare app for usage: `npm install`
+2. Install npm and nodejs (legacy)
+3. Prepare app for usage: `npm install`
+4. Install typings for typescript: `npm install typings -g` and `typings install`
+5. Install the webpack: `npm install webpack -g`
+6. Install the webpack-dev-server: `npm install webpack-dev-server -g`
 
 ## Usage
 1. Build and start: `npm run start-build`
