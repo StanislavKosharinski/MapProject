@@ -10,6 +10,7 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {LiftService} from "../service/LiftService";
 import {SlopeService} from "../service/SlopeService";
 
+//Menu directive.
 @Component({
     selector: 'left-menu',
     templateUrl: 'app/blocks/menu_left.html',
@@ -19,8 +20,10 @@ import {SlopeService} from "../service/SlopeService";
 
 export class MenuDirective implements OnInit {
 
+
     myLift: Lift;
     mySlope: Slope;
+
     myLifts:Array<Lift>;
     mySlopes:Array<Slope>;
 
@@ -38,12 +41,13 @@ export class MenuDirective implements OnInit {
     }
 
 
+    //Sending requests to services to fill array with objects
     getSpecificLiftsAndSlopes(){
         this.slopeService.getSpecificSlopes(this.map.ids).subscribe(slopes => this.mySlopes = slopes);
         this.liftService.getSpecificLifts(this.map.ids).subscribe(lifts => this.myLifts = lifts);
     }
 
-
+    //Filling objects from array
     setItemById(id:string, item:ItemType){
         this.isOpen = true;
         switch (item){
@@ -58,6 +62,7 @@ export class MenuDirective implements OnInit {
         }
     }
 
+    //Universal method to getting item from array by ID
     getItem(items:Array<any>, id:string){
         let item = items.filter(x => x.id === id)[0];
         if(!item)
@@ -66,6 +71,7 @@ export class MenuDirective implements OnInit {
             return item;
     }
 
+    //Method for closing menu.
     closeMenu(){
         this.isOpen = false;
         this.map.markerAdded = false;
