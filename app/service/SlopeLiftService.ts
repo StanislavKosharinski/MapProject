@@ -13,7 +13,7 @@ export class SlopeLiftService{
 
     constructor(private http:Http){}
 
-    //ForkJoin requst to api to get slopes and lifts
+    //ForkJoin requst to api to get specific slopes and lifts
     getSpecificLiftsAndSlopes(ids:Array<string>){
         return Observable.forkJoin(
             this.http.get(ApiCall.REST_API + "/api/lifts/specific/" + ids).map(response => response.json()),
