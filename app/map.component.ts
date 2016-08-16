@@ -5,6 +5,8 @@ import {Component, ViewChild, OnInit, Input} from "@angular/core";
 import {MenuDirective} from "./directives/menu.directive";
 import {ItemType} from "./enums/ItemType";
 import {ClickedElementListener} from "./utils/ClickedElementListener";
+import {HTTP_PROVIDERS} from "@angular/http";
+import {SlopeLiftService} from "./service/SlopeLiftService";
 declare var svgPanZoom:any;
 declare var $:any;
 
@@ -13,7 +15,8 @@ declare var $:any;
     selector: 'map-lines',
     templateUrl:'app/blocks/map_lines.html',
     styleUrls: ['app/blocks/map_lines_style.css'],
-    directives: [MenuDirective]
+    directives: [MenuDirective],
+    providers: [SlopeLiftService, HTTP_PROVIDERS]
 })
 
 export class MapComponent  implements OnInit{
@@ -29,12 +32,13 @@ export class MapComponent  implements OnInit{
     markerAdded:boolean = false;
     ids:Array<string>;
 
-    constructor(){
+    constructor(private slopeLiftService: SlopeLiftService){
     }
 
     ngOnInit() {
         this.implementZoomPan();
         this.getIdsFromMap();
+        this.getSpecificLiftsAndSlopes();
     }
 
     //Method for opening menu. It is sending request to menu method setItemById.
@@ -114,6 +118,7 @@ export class MapComponent  implements OnInit{
 
         this.markerAdded = true;
     }
+
     //Method to track difference between clicking and panning to close menu
     onMapClick(){
         var element = document.getElementById('mapImage');
@@ -145,5 +150,13 @@ export class MapComponent  implements OnInit{
         }
         this.ids = tempIds;
         return this.ids;
+    }
+
+    //ForkJoin request to service and fill menu arrays
+    getSpecificLiftsAndSlopes(){
+        this.slopeLiftService.getSpecificLiftsAndSlopes(this.ids).subscribe(data => {
+            this.menu.myLifts = data[0];
+            this.menu.mySlopes = data[1]
+        });
     }
 }
