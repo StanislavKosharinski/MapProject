@@ -14,6 +14,45 @@ path:hover{
 }
 .controls{
     position: absolute;
+    right: 3px;
+    /*background: rgba(128, 128, 128, 0.55);*/
+    padding: 5px;
+}
+.controls button{
+    margin:0 auto;
+    font-size: 20px;
+    padding: 10px;
+    padding-left: 11px;
+    padding-right: 11px;
+    border: 0px !important;
+    outline: none;
+    background: rgba(128, 128, 128, 0.55);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+    animation: opacity 1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+.controls button:last-child{
+    margin-right: 0px;
+}
+.controls button:active{
+    background: rgba(255, 255, 255, 0.55);
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+@keyframes opacity {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 @keyframes dash {
     to {
