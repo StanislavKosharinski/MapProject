@@ -2,6 +2,7 @@
 <div class="img">
   <svg xmlns="http://www.w3.org/2000/svg"
        width="16.4375in" height="9.27083in"
+       viewBox="0 145 1790 880"
        id="mapSvg">
   <!--4-SLOPE-->
   <g id="mapItems" class="svg-pan-zoom_viewport">
@@ -58,47 +59,47 @@
     <!--SLOPE-->
 
     <!--LIFT-->
-    <path id="Unnamed"
+    <path id="8e4d9a0a-ccc7-4bf8-9944-4bdb81a0a88b"
           fill="none" stroke="blue" stroke-width="6"
           d="M 887.50,391.25
            C 887.50,391.25 1437.12,488.38 1437.12,488.38" (click)="openMenu($event, itemType.LIFT)" />
-    <image xlink:href="../../images/marker_blue.png" x="1236.62" y="410.88" height="50px" width="50px" />
-    <text x="1256.62" y="430.88" fill="white">B</text>
     <circle cx="887.50" cy="391.25" r="5" fill="black" />
     <circle cx="1437.12" cy="488.38" r="5" fill="black" />
+    <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="866.75" y="349.25" height="40px" width="40px" />
+    <text x="882.62" y="367.88" fill="white">B</text>
     <!--LIFT-->
 
     <!--LIFT-->
-    <path id="Unnamed"
+    <path id="e05a3822-18cc-4fb4-b99a-c343fb5b6f4c"
           fill="none" stroke="blue" stroke-width="6"
           d="M 820.00,534.00
            C 820.00,534.00 697.00,563.75 697.00,563.75" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="820.00" cy="534.00" r="5" fill="black" />
     <circle cx="697.00" cy="563.75" r="5" fill="black" />
-    <image xlink:href="../../images/marker_blue.png" x="672.00" y="511.75" height="50px" width="50px" />
-    <text x="692.00" y="530.75" fill="white">D</text>
+    <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="676.00" y="520.75" height="40px" width="40px" />
+    <text x="691.00" y="540.75" fill="white">D</text>
     <!--LIFT-->
 
     <!--LIFT-->
-    <path id="Unnamed"
+    <path id="479cfaa7-e819-4134-b437-3941f0af2451"
           fill="none" stroke="blue" stroke-width="6"
           d="M 827.88,525.25
            C 827.88,525.25 760.00,533.38 760.00,533.38" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="827.88" cy="525.25" r="5" fill="black" />
     <circle cx="760.00" cy="533.38" r="5" fill="black" />
-    <image xlink:href="../../images/marker_blue.png" x="735.00" y="481.38" height="50px" width="50px" />
-    <text x="755.00" y="500.38" fill="white">E</text>
+    <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="740.00" y="490.38" height="40px" width="40px" />
+    <text x="755.00" y="510.38" fill="white">E</text>
     <!--LIFT-->
 
     <!--LIFT-->
-    <path id="Unnamed"
+    <path id="d93bf681-75d4-4a96-903b-c446b66fa56b"
           fill="none" stroke="blue" stroke-width="6"
           d="M 1465.33,501.67
            C 1465.33,501.67 1487.00,597.67 1487.00,597.67" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="1465.33" cy="501.67" r="5" fill="black" />
     <circle cx="1487.00" cy="597.67" r="5" fill="black" />
-    <image xlink:href="../../images/marker_blue.png" x="735.00" y="481.38" height="50px" width="50px" />
-    <text x="755.00" y="500.38" fill="white">E</text>
+    <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="1445.25" y="460.25" height="40px" width="40px" />
+    <text x="1459.25" y="478.25" fill="white">C</text>
     <!--LIFT-->
 
     <!--LIFT-->
@@ -108,23 +109,23 @@
            C 768.25,571.25 94.00,790.67 94.00,790.67" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="768.25" cy="571.25" r="5" fill="black" />
     <circle cx="94.00" cy="790.67" r="5" fill="black" />
-    <image xlink:href="../../images/marker_blue.png" x="1440.25" y="451.25" height="50px" width="50px" />
-    <text x="1459.25" y="471.25" fill="white">C</text>
+    <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="73.50" y="745.50" height="40px" width="40px" />
+    <text x="89.50" y="765.50" fill="white">F</text>
     <!--LIFT-->
 
     <!--LIFT-->
+    <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="585.50" y="745.50" height="40px" width="40px" style="transform: rotate(-25deg);"/>
+    <text x="865.50" y="436.25" fill="white">F</text>
     <path id="Unnamed"
           fill="none" stroke="blue" stroke-width="6"
           d="M 896.00,411.25
            C 896.00,411.25 885.50,455.50 885.50,455.50" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="896.00" cy="411.25" r="5" fill="black" />
     <circle cx="885.50" cy="455.50" r="5" fill="black" />
-    <image xlink:href="../../images/marker_blue.png" x="585.50" y="735.50" height="50px" width="50px" style="transform: rotate(-25deg);"/>
-    <text x="865.50" y="428.25" fill="white">F</text>
     <!--LIFT-->
 
     <g id="marker" *ngIf="markerAdded">
-      <image [attr.x]="elementCx - 10" [attr.y]="elementCy - 34" width="20px" height="34px" xlink:href="../../images/marker_green.png"/>
+      <image [attr.x]="elementCx - 30" [attr.y]="elementCy - 45" width="50px" height="50px" xlink:href="../../images/marker.png"/>
     </g>
 </g>
 </svg>
