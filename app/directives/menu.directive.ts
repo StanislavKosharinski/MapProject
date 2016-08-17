@@ -54,9 +54,7 @@ export class MenuDirective implements OnInit {
     //Multipurpose method to getting item from array by ID
     getItem(items:Array<any>, id:string){
         let item = items.filter(x => x.id === id)[0];
-        if(!item)
-            this.isError = true;
-        else
+        this.isError = !item;
             return item;
     }
 
