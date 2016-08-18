@@ -2,7 +2,11 @@
     <div class="menu-wrapper">
         <div class="menu-tabs">
             <div class="modal" id="modal_window" *ngIf="isOpen">
+                <div class="expand--open">
+                    <span class="btn-expand--open"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                </div>
                 <div class="modal-img">
+                    <span class="btn-expand--close"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
                     <span class="btn-close" (click)="closeMenu()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
                 </div>
                 <div class="modal-text" >

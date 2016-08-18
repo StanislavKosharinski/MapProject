@@ -1,13 +1,17 @@
-@media screen and (min-width: 1505px){
-    body{
-        width: 1505px;
-        height: 895px;
+@media screen and (max-width: 600px){
+    .menu,
+    .modal{
+        width: auto !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-    html{
-        background: grey;
+    .menu-wrapper{
+        width: auto !important;
     }
-    .img{
-        background-size: 100%;
-        width: 1160px;
+    .btn-expand--close,
+    .btn-close{
+        opacity: 1 !important;
     }
 }

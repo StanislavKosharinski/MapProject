@@ -2,6 +2,9 @@ svg{
     position: absolute;
     top:0;
 }
+svg:active{
+    cursor: move;
+}
 path{
     cursor: pointer;
     pointer-events:all;
@@ -45,6 +48,16 @@ path:hover{
     -moz-transition: all 0.1s linear;
     -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
+}
+.u-explorer{
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    width: 80px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 20px;
+    display: block;
+    margin-top: 15px;
 }
 @keyframes opacity {
     from{
