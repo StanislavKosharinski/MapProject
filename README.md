@@ -13,3 +13,8 @@
 2. For usual start: `npm run start`
 3. For compressed start with build: `npm run start-build-compressed`
 4. For compressed production mode start with build: `npm run start-prod-compressed`
+
+## Libraries
+1. jQuery: https://jquery.com/
+2. svg-pan-zoom: https://github.com/ariutta/svg-pan-zoom
+3. Hammer.js: http://hammerjs.github.io/
