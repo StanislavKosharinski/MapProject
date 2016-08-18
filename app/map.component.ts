@@ -9,6 +9,8 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeLiftService} from "./service/SlopeLiftService";
 declare var svgPanZoom:any;
 declare var $:any;
+declare var hammer:any;
+declare var Hammer:any;
 
 //Map component
 @Component({
@@ -36,13 +38,13 @@ export class MapComponent  implements OnInit{
     }
 
     ngOnInit() {
-        this.implementZoomPan();
+        this.implementHammerZoomPan();
         this.getIdsFromMap();
         this.getSpecificLiftsAndSlopes();
     }
 
     //Method for opening menu. It is sending request to menu method setItemById.
-    openMenu(event: MouseEvent, item:ItemType){
+    openMenu(event: any, item:ItemType){
         //Passing layerX and layerY of mouse to setMarkerPosition method
         this.setMarkerPosition(event.layerX, event.layerY);
         switch (item){
@@ -56,8 +58,57 @@ export class MapComponent  implements OnInit{
         }
     }
 
-    //Method using to implementing svg-pan-zoom library
-    private implementZoomPan(){
+    //Method using to implementing svg-pan-zoom library and hammer library
+    private implementHammerZoomPan(){
+
+        var mobileEvents = {
+            haltEventListeners: ['touchstart', 'touchend', 'touchmove', 'touchleave', 'touchcancel']
+            , init: function (options) {
+                var instance = options.instance
+                    , initialScale = 1
+                    , pannedX = 0
+                    , pannedY = 0;
+                // Init Hammer
+                // Listen only for pointer and touch events
+                this.hammer = Hammer(options.svgElement, {
+                    inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchInput
+                });
+                // Enable pinch
+                this.hammer.get('pinch').set({enable: true});
+                // Handle double tap
+                this.hammer.on('doubletap', function (ev) {
+                    instance.zoomIn()
+                });
+                // Handle pan
+                this.hammer.on('panstart panmove', function (ev) {
+                    // On pan start reset panned variables
+                    if (ev.type === 'panstart') {
+                        pannedX = 0;
+                        pannedY = 0;
+                    }
+                    // Pan only the difference
+                    instance.panBy({x: ev.deltaX - pannedX, y: ev.deltaY - pannedY});
+                    pannedX = ev.deltaX;
+                    pannedY = ev.deltaY;
+                });
+                // Handle pinch
+                this.hammer.on('pinchstart pinchmove', function (ev) {
+                    // On pinch start remember initial zoom
+                    if (ev.type === 'pinchstart') {
+                        initialScale = instance.getZoom();
+                        instance.zoom(initialScale * ev.scale)
+                    }
+                    instance.zoom(initialScale * ev.scale);
+                });
+                // Prevent moving the page on some devices when panning over SVG
+                options.svgElement.addEventListener('touchmove', function (e) {
+                    e.preventDefault();
+                });
+            }
+            , destroy: function () {
+                this.hammer.destroy()
+            }
+        };
 
         //Implementing svg-pan-zoom library
         var zoomPan = svgPanZoom('#mapSvg',  {
@@ -70,6 +121,7 @@ export class MapComponent  implements OnInit{
             , eventsListenerElement: document.querySelector('#mapSvg .svg-pan-zoom_viewport')
             , fit: true
             , center: true
+            , customEventsHandler: mobileEvents
         });
 
         document.getElementById('zoom-in').addEventListener('click', function(ev){
