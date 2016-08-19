@@ -40,7 +40,6 @@ export class MenuDirective implements OnInit {
     //Filling objects from array
     setItemById(id:string, item:ItemType){
         this.isOpen = true;
-        this.isExpanded = true;
         if(document.getElementById("menu"))
             this.expandMenu(document.getElementById("menu"), document.getElementById("left_arrow"));
         switch (item){
