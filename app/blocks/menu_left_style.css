@@ -64,6 +64,7 @@
     background: rgba(206, 205, 205, 1) url("/images/modal_img.png") center;
     height: 200px;
     z-index: 2;
+    background-size: cover;
 }
 .modal > .modal-text{
     position: relative;

@@ -23,4 +23,8 @@
     .expand--open{
         right: 0 !important;
     }
+    .btn-expand--open{
+        margin-right: 10px !important;
+        margin-top: 3px;
+    }
 }
