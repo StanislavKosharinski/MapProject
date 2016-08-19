@@ -41,6 +41,8 @@ export class MenuDirective implements OnInit {
     setItemById(id:string, item:ItemType){
         this.isOpen = true;
         this.isExpanded = true;
+        if(document.getElementById("menu"))
+            this.expandMenu(document.getElementById("menu"), document.getElementById("left_arrow"));
         switch (item){
             case ItemType.LIFT:
                 this.mySlope = null;
@@ -60,20 +62,29 @@ export class MenuDirective implements OnInit {
             return item;
     }
 
+    expandMenu(menu:HTMLElement, arrow:HTMLElement){
+        this.isExpanded = true;
+        menu.style.left = "0px";
+        arrow.style.transform = "rotate(0deg)";
+    }
+
+    collapseMenu(menu:HTMLElement, arrow:HTMLElement){
+        this.isExpanded = false;
+        menu.style.left = "-362px";
+        arrow.style.transform = "rotate(-180deg)";
+    }
+
     setExpand(){
         var menu = document.getElementById("menu");
         var arrow = document.getElementById("left_arrow");
         switch (this.isExpanded){
             case true:
-                menu.style.left = "-362px";
-                arrow.style.transform = "rotate(-180deg)";
+                this.collapseMenu(menu, arrow);
                 break;
             case false:
-                menu.style.left = "0px";
-                arrow.style.transform = "rotate(0deg)";
+                this.expandMenu(menu, arrow);
                 break;
         }
-        this.isExpanded = !this.isExpanded;
     }
 
     //Method for closing menu.
