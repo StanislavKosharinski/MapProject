@@ -1,17 +1,26 @@
-@media screen and (max-width: 600px){
-    .menu,
+@media screen and (min-width: 768px){
+    .btn-expand--close{
+        display: none;
+    }
+}
+@media screen and (max-width: 768px){
+    .menu{
+        width: 100% !important;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
     .modal{
         width: auto !important;
         top: 0;
         left: 0;
-        right: 0;
         bottom: 0;
+        right: 0;
     }
     .menu-wrapper{
         width: auto !important;
     }
-    .btn-expand--close,
-    .btn-close{
-        opacity: 1 !important;
+    .expand--open{
+        right: 0 !important;
     }
 }

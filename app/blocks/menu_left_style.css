@@ -109,13 +109,14 @@
 }
 .btn-expand--close{
     position: absolute;
-    right: 35px;
+    right: 5px;
     top: 0px;
-    font-size: 25px;
+    font-size: 45px;
     opacity: 0.4;
     cursor: pointer;
 }
 .btn-expand--open{
+    display: block;
     font-size: 45px;
     margin-left: 10px;
     margin-right: 5px;
