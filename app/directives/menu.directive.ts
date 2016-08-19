@@ -66,12 +66,18 @@ export class MenuDirective implements OnInit {
         this.isExpanded = true;
         menu.style.left = "0px";
         arrow.style.transform = "rotate(0deg)";
+        if(window.innerWidth <= 768)
+            document.getElementById("expand_open").setAttribute("style", "right:50px");
     }
 
     collapseMenu(menu:HTMLElement, arrow:HTMLElement){
         this.isExpanded = false;
         menu.style.left = "-362px";
         arrow.style.transform = "rotate(-180deg)";
+        if(window.innerWidth <= 768){
+            document.getElementById("expand_open").setAttribute("style", "right:-50px !important");
+            menu.style.left = "-100%";
+        }
     }
 
     setExpand(){
