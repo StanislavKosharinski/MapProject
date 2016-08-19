@@ -8,12 +8,15 @@ svg:active{
 path{
     cursor: pointer;
     pointer-events:all;
-    stroke-dasharray: 1000;
+    /*stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: dash 5s linear forwards;
+    animation: dash 5s linear forwards;*/
 }
 path:hover{
     stroke-width: 8px;
+}
+.path-highlight{
+    animation: highlight 2s infinite;
 }
 .controls{
     position: absolute;
@@ -71,5 +74,12 @@ path:hover{
     to {
         stroke-dashoffset: 0;
     }
+}
+@keyframes highlight {
+    0%      {stroke-width: 4px;}
+    25%     {stroke-width: 8px;}
+    50%     {stroke-width: 12px;}
+    75%     {stroke-width: 8px;}
+    100%    {stroke-width: 4px;}
 }
 
