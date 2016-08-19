@@ -98,6 +98,7 @@ export class MenuDirective implements OnInit {
         this.isOpen = false;
         this.isExpanded = false;
         this.map.markerAdded = false;
+        this.map.removeHighlight();
         if(this.isError)
             this.isError = false;
         if(this.myLift)

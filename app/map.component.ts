@@ -50,12 +50,25 @@ export class MapComponent  implements OnInit{
         switch (item){
             case ItemType.LIFT:
                 //Getting id by method getClickedElementId
+                this.addHighlight(event);
                 this.menu.setItemById(ClickedElementListener.getClickedElementId(event), ItemType.LIFT);
                 break;
             case ItemType.SLOPE:
+                this.addHighlight(event);
                 this.menu.setItemById(ClickedElementListener.getClickedElementId(event), ItemType.SLOPE);
                 break;
         }
+    }
+
+    addHighlight(event:any){
+        this.removeHighlight();
+        document.getElementById(ClickedElementListener.getClickedElementId(event)).classList.add("path-highlight");
+    }
+
+    removeHighlight(){
+        let highLightedItem = document.getElementsByClassName("path-highlight").item(0);
+        if(highLightedItem)
+            highLightedItem.classList.remove("path-highlight");
     }
 
     //Method using to implementing svg-pan-zoom library and hammer library
