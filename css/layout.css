@@ -20,6 +20,10 @@ body{
   z-index: 1;
   width: 362px;
   overflow: inherit;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  transition: all 0.1s linear;
 }
 .img{
   display: inline-block;

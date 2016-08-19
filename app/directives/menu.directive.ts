@@ -25,6 +25,7 @@ export class MenuDirective implements OnInit {
     mySlopes:Array<Slope>;
 
     isOpen:boolean = false;
+    isExpanded:boolean = false;
     isError: boolean = false;
 
     public itemType = ItemType;
@@ -39,6 +40,7 @@ export class MenuDirective implements OnInit {
     //Filling objects from array
     setItemById(id:string, item:ItemType){
         this.isOpen = true;
+        this.isExpanded = true;
         switch (item){
             case ItemType.LIFT:
                 this.mySlope = null;
@@ -58,9 +60,26 @@ export class MenuDirective implements OnInit {
             return item;
     }
 
+    setExpand(){
+        var menu = document.getElementById("menu");
+        var arrow = document.getElementById("left_arrow");
+        switch (this.isExpanded){
+            case true:
+                menu.style.left = "-362px";
+                arrow.style.transform = "rotate(-180deg)";
+                break;
+            case false:
+                menu.style.left = "0px";
+                arrow.style.transform = "rotate(0deg)";
+                break;
+        }
+        this.isExpanded = !this.isExpanded;
+    }
+
     //Method for closing menu.
     closeMenu(){
         this.isOpen = false;
+        this.isExpanded = false;
         this.map.markerAdded = false;
         if(this.isError)
             this.isError = false;
