@@ -5,7 +5,7 @@ import {Component, OnInit, forwardRef, Inject} from "@angular/core"
 import {Slope} from "../domain/Slope";
 import {Lift} from "../domain/Lift";
 import {ItemType} from "../enums/ItemType";
-import {MapComponent} from "../map.component";
+import {MapDirective} from "./map.directive";
 
 //Menu directive.
 @Component({
@@ -30,7 +30,7 @@ export class MenuDirective implements OnInit {
 
     public itemType = ItemType;
 
-    constructor(@Inject(forwardRef(() => MapComponent)) private map: MapComponent) {
+    constructor(@Inject(forwardRef(() => MapDirective)) private map: MapDirective) {
     }
 
     ngOnInit() {
