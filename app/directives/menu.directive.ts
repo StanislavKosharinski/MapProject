@@ -6,6 +6,7 @@ import {Slope} from "../domain/Slope";
 import {Lift} from "../domain/Lift";
 import {ItemType} from "../enums/ItemType";
 import {MapDirective} from "./map.directive";
+import {User} from "../utils/CheckLogin";
 
 //Menu directive.
 @Component({
@@ -29,6 +30,8 @@ export class MenuDirective implements OnInit {
     isError: boolean = false;
 
     public itemType = ItemType;
+    public user = User;
+
 
     constructor(@Inject(forwardRef(() => MapDirective)) private map: MapDirective) {
     }

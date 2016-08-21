@@ -7,6 +7,9 @@ import {ItemType} from "../enums/ItemType";
 import {ClickedElementListener} from "../utils/ClickedElementListener";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {SlopeLiftService} from "../service/SlopeLiftService";
+import {User} from "../utils/CheckLogin";
+import {Router} from "@angular/router";
+import {Authenticator} from "../utils/Authentificator";
 declare var svgPanZoom:any;
 declare var $:any;
 declare var hammer:any;
@@ -26,6 +29,7 @@ export class MapDirective  implements OnInit{
     //Getting child(Menu directive)
     @ViewChild('left_menu') menu :MenuDirective;
     public itemType = ItemType;
+    public user = User;
 
     //Used for setting marker position
     @Input() elementCx;
@@ -34,7 +38,7 @@ export class MapDirective  implements OnInit{
     markerAdded:boolean = false;
     ids:Array<string>;
 
-    constructor(private slopeLiftService: SlopeLiftService){
+    constructor(private slopeLiftService: SlopeLiftService, public auth: Authenticator, public router: Router){
     }
 
     ngOnInit() {
@@ -205,5 +209,12 @@ export class MapDirective  implements OnInit{
             this.menu.myLifts = data[0];
             this.menu.mySlopes = data[1]
         });
+    }
+
+    onLogout(){
+        this.auth.logout()
+            .subscribe(
+                () => this.router.navigate(['/login'])
+            );
     }
 }

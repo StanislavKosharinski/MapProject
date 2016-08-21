@@ -133,8 +133,8 @@
     <button id="zoom-in"><i class="fa fa-compress" aria-hidden="true"></i></button>
     <button id="reset"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
     <button id="zoom-out"><i class="fa fa-expand" aria-hidden="true"></i></button>
-    <div class="sign-out-wrapper">
-      <button id="sign-out" class="sign-out"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
+    <div class="sign-out-wrapper" *ngIf="user.isLoggedIn()">
+      <button id="sign-out" class="sign-out"><i class="fa fa-sign-out" aria-hidden="true" (click)="onLogout()"></i></button>
       <span id="sign-out-description">Sign out</span>
     </div>
   </div>
