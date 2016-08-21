@@ -25,9 +25,9 @@
                             <span>Date</span><li>{{myLift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
                         </ul>
                         <ul>
-                            <form action="" *ngIf="user.isLoggedIn()">
+                            <form action="" *ngIf="user.isLoggedIn()" [formGroup]="changeIDForm" (ngSubmit)="changeItemID(changeIDForm.value)">
                                 <span>Change path ID</span>
-                                <input type="text" placeholder="Write a path ID">
+                                <input type="text" placeholder="Write a path ID" formControlName="itemID">
                                 <button type="submit"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
                             </form>
                         </ul>

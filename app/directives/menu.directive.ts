@@ -7,12 +7,14 @@ import {Lift} from "../domain/Lift";
 import {ItemType} from "../enums/ItemType";
 import {MapDirective} from "./map.directive";
 import {User} from "../utils/CheckLogin";
+import {FormGroup, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES} from "@angular/forms";
 
 //Menu directive.
 @Component({
     selector: 'left-menu',
     templateUrl: 'app/blocks/menu_left.html',
-    styleUrls: ['app/blocks/menu_left_style.css']
+    styleUrls: ['app/blocks/menu_left_style.css'],
+    directives: [REACTIVE_FORM_DIRECTIVES]
 })
 
 export class MenuDirective implements OnInit {
@@ -29,11 +31,14 @@ export class MenuDirective implements OnInit {
     isExpanded:boolean = false;
     isError: boolean = false;
 
+    changeIDForm: FormGroup;
+
     public itemType = ItemType;
     public user = User;
 
 
-    constructor(@Inject(forwardRef(() => MapDirective)) private map: MapDirective) {
+
+    constructor(@Inject(forwardRef(() => MapDirective)) private map: MapDirective, private fb: FormBuilder) {
     }
 
     ngOnInit() {
@@ -44,6 +49,9 @@ export class MenuDirective implements OnInit {
     setItemById(id:string, item:ItemType){
         this.isOpen = true;
         this.isExpanded = true;
+        this.changeIDForm = this.fb.group({
+            itemID: [id, [<any>Validators.required]]
+        });
         if(document.getElementById("menu"))
             this.expandMenu(document.getElementById("menu"), document.getElementById("left_arrow"));
         switch (item){
@@ -63,6 +71,10 @@ export class MenuDirective implements OnInit {
         let item = items.filter(x => x.id === id)[0];
         this.isError = !item;
             return item;
+    }
+
+    changeItemID(value:any){
+
     }
 
     expandMenu(menu:HTMLElement, arrow:HTMLElement){

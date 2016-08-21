@@ -14,7 +14,7 @@ import {FormGroup, FormBuilder, Validators, REACTIVE_FORM_DIRECTIVES} from "@ang
 })
 
 export class LoginDirective implements OnInit{
-    form: FormGroup;
+    loginForm: FormGroup;
     error:boolean = false;
     constructor(private fb: FormBuilder, private auth:Authenticator, private router:Router){
 
@@ -22,7 +22,7 @@ export class LoginDirective implements OnInit{
 
 
     ngOnInit(){
-        this.form = this.fb.group({
+        this.loginForm = this.fb.group({
             username: ['', [<any>Validators.required]],
             password: ['', [<any>Validators.required]]
         });
