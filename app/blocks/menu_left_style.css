@@ -1,9 +1,4 @@
 .menu-wrapper{
-    float: left;
-    display: inline-block;
-    min-height: 100%;
-    overflow: hidden;
-    top:0;
     width: 352px;
 }
 .refresh-buttons{
@@ -54,10 +49,12 @@
 .modal {
     height: 100%;
     width: 352px;
-    position: absolute;
-    top: 0;
     word-break: break-all;
     z-index: 2;
+}
+.scroll-fixer{
+    overflow: auto;
+    height: 70%;
 }
 .modal > .modal-img {
     position: relative;
@@ -131,6 +128,8 @@
     width: 50px;
     height: 50px;
     background: rgb(237, 237, 237);
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
     cursor: pointer;
 }
 .btn-close:hover,

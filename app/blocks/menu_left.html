@@ -1,4 +1,5 @@
 <div id="menu" class="menu" *ngIf="isOpen">
+    <div class="scroll-fixer">
     <div class="menu-wrapper">
         <div class="menu-tabs">
             <div class="modal" id="modal_window">
@@ -9,26 +10,28 @@
                     <!--span class="btn-expand--close"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span-->
                 </div>
                 <div class="modal-text" >
-                    <ul *ngIf="mySlope">
-                        <span>Name</span><li>{{mySlope.name}}</li>
-                        <span>Status</span><li>{{mySlope.slopeStatusEntity.status}}</li>
-                        <span>Date</span><li>{{mySlope.slopeStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
-                        <span>Difficulty</span><li>{{mySlope.difficulty}}</li>
-                        <span>Length</span><li>{{mySlope.length + 'M'}}</li>
-                    </ul>
-                    <ul *ngIf="myLift">
-                        <span>Name</span><li>{{myLift.name}}</li>
-                        <span>Type</span><li>{{myLift.type}}</li>
-                        <span>Location</span><li>{{myLift.location}}</li>
-                        <span>Status</span><li>{{myLift.liftStatusEntity.status}}</li>
-                        <span>Date</span><li>{{myLift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
 
-                    </ul>
-                    <ul *ngIf="isError">
-                        <span>Error!</span><li>No information received</li>
-                    </ul>
+                        <ul *ngIf="mySlope">
+                            <span>Name</span><li>{{mySlope.name}}</li>
+                            <span>Status</span><li>{{mySlope.slopeStatusEntity.status}}</li>
+                            <span>Date</span><li>{{mySlope.slopeStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
+                            <span>Difficulty</span><li>{{mySlope.difficulty}}</li>
+                            <span>Length</span><li>{{mySlope.length + 'M'}}</li>
+                        </ul>
+                        <ul *ngIf="myLift">
+                            <span>Name</span><li>{{myLift.name}}</li>
+                            <span>Type</span><li>{{myLift.type}}</li>
+                            <span>Location</span><li>{{myLift.location}}</li>
+                            <span>Status</span><li>{{myLift.liftStatusEntity.status}}</li>
+                            <span>Date</span><li>{{myLift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
+                        </ul>
+                        <ul *ngIf="isError">
+                            <span>Error!</span><li>No information received</li>
+                        </ul>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
