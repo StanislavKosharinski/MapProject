@@ -18,8 +18,7 @@ body{
   display: inline-block;
   position: fixed;
   z-index: 1;
-  width: 362px;
-  overflow: inherit;
+  padding-bottom: 10px;
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
   -o-transition: all 0.1s linear;
