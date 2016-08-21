@@ -59,7 +59,8 @@
 }
 .scroll-fixer{
     overflow: auto;
-    height: 70%;
+    height: 100%;
+    overflow-x: hidden;
 }
 .modal > .modal-img {
     position: relative;
