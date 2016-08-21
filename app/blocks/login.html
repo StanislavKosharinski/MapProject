@@ -1,7 +1,8 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-    <div *ngIf="error">Check credentials!</div>
+    <div *ngIf="error" class="error-message">Check credentials!</div>
     <div class="title">Login</div>
     <input type="text" placeholder="Username" formControlName="username">
     <input type="password" placeholder="Password" formControlName="password">
     <button type="submit">Go!</button>
+    <a href="/" class="back-to-map"><i class="fa fa-map" aria-hidden="true"></i></a>
 </form>
