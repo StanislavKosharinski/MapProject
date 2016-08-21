@@ -23,10 +23,10 @@
                             <span>Location</span><li>{{myLift.location}}</li>
                             <span>Status</span><li>{{myLift.liftStatusEntity.status}}</li>
                             <span>Date</span><li>{{myLift.liftStatusEntity.date | date:"dd/MM/yyyy HH:mm"}}</li>
-                            <span>Change path ID</span>
                         </ul>
                         <ul>
                             <form action="" *ngIf="user.isLoggedIn()">
+                                <span>Change path ID</span>
                                 <input type="text" placeholder="Write a path ID">
                                 <button type="submit"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
                             </form>
