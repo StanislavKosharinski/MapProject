@@ -91,6 +91,7 @@ button[type="submit"]:hover {
     height: 48px;
     width: 48px;
     margin-left: 15px;
+    outline: none;
     display: inline-block;
     vertical-align: middle;
     background-color: #00c853;

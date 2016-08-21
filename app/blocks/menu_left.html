@@ -1,4 +1,5 @@
 <div id="menu" class="menu" *ngIf="isOpen">
+    <div class="scroll-fixer">
     <div class="menu-wrapper">
         <div class="menu-tabs">
             <div class="modal" id="modal_window">
@@ -9,7 +10,7 @@
                     <!--span class="btn-expand--close"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span-->
                 </div>
                 <div class="modal-text" >
-                    <div class="scroll-fixer">
+
                         <ul *ngIf="mySlope">
                             <span>Name</span><li>{{mySlope.name}}</li>
                             <span>Status</span><li>{{mySlope.slopeStatusEntity.status}}</li>
@@ -34,9 +35,10 @@
                         <ul *ngIf="isError">
                             <span>Error!</span><li>No information received</li>
                         </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
