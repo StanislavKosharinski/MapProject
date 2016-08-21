@@ -21,8 +21,8 @@ path:hover{
 .controls{
     position: absolute;
     right: 3px;
-    /*background: rgba(128, 128, 128, 0.55);*/
     padding: 5px;
+    padding-right: 75px;
 }
 .controls button{
     margin:0 auto;
@@ -62,7 +62,10 @@ path:hover{
     display: block;
     margin-top: 15px;
 }
-.controls #sign-out-description{
+.controls #sign-out-description,
+#zoom-out-description,
+#zoom-in-description,
+#reset-description{
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -77,12 +80,20 @@ path:hover{
     -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
+.controls #zoom-in:hover + #zoom-in-description,
 .controls .sign-out:hover + #sign-out-description{
     opacity: 1;
     -webkit-transition: all 0.1s linear;
     -moz-transition: all 0.1s linear;
     -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
+}
+.sign-out-wrapper{
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    text-align: center;
+    top: 5px;
 }
 @keyframes opacity {
     from{
