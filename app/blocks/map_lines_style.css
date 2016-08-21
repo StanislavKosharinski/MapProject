@@ -8,9 +8,6 @@ svg:active{
 path{
     cursor: pointer;
     pointer-events:all;
-    /*stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: dash 5s linear forwards;*/
 }
 path:hover{
     stroke-width: 8px;
@@ -22,7 +19,6 @@ path:hover{
     position: absolute;
     right: 3px;
     padding: 5px;
-    padding-right: 75px;
 }
 .controls button{
     margin:0 auto;
@@ -62,12 +58,20 @@ path:hover{
     display: block;
     margin-top: 15px;
 }
-.controls #sign-out-description,
+#sign-out-description{
+    margin-left: -100px;
+}
+#zoom-in-description{
+    margin-left: 45px;
+}
+#zoom-out-description{
+    margin-left: -50px;
+}
+#sign-out-description,
 #zoom-out-description,
 #zoom-in-description,
 #reset-description{
     display: block;
-    margin: 0 auto;
     text-align: center;
     margin-top: 20px;
     background-color: #c5c1c3;
@@ -81,6 +85,8 @@ path:hover{
     transition: all 0.1s linear;
 }
 .controls #zoom-in:hover + #zoom-in-description,
+.controls #zoom-out:hover + #zoom-out-description,
+.controls #reset:hover + #reset-description,
 .controls .sign-out:hover + #sign-out-description{
     opacity: 1;
     -webkit-transition: all 0.1s linear;
@@ -88,12 +94,13 @@ path:hover{
     -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
+.zoom-in-wrapper,
+.zoom-out-wrapper,
+.reset-wrapper,
 .sign-out-wrapper{
-    position: absolute;
     display: inline-block;
-    right: 0;
     text-align: center;
-    top: 5px;
+    width: 45px;
 }
 @keyframes opacity {
     from{
