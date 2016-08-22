@@ -147,7 +147,7 @@
 input[type="text"]{
     display: block;
     font-size: 14px;
-    width:100%;
+    width:90%;
     margin: 10px auto;
     padding: 10px 8px 10px 8px;
     border-radius: 5px;
@@ -185,4 +185,27 @@ button[type="submit"]:hover {
     text-shadow:0px 1px 1px rgba(0,0,0,.65);
     -webkit-transition: all 0.40s ease-out;
     transition: all 0.40s ease-out;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    width: 8px;
+}
+
+.menu:hover ::-webkit-scrollbar{
+    display: block;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rgb(206, 205, 205);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #757575;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0,0,0,0.4);
 }
