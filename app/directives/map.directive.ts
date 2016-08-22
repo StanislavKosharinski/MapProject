@@ -63,11 +63,12 @@ export class MapDirective  implements OnInit{
                 break;
         }
     }
-
+    
     addHighlight(event:any){
         this.removeHighlight();
         document.getElementById(ClickedElementListener.getClickedElementId(event)).classList.add("path-highlight");
     }
+
 
     removeHighlight(){
         let highLightedItem = document.getElementsByClassName("path-highlight").item(0);

@@ -1,4 +1,4 @@
-<left-menu #left_menu></left-menu>
+<left-menu #left_menu xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"></left-menu>
 <div class="img">
   <svg xmlns="http://www.w3.org/2000/svg"
        width="16.4375in" height="9.27083in"
@@ -92,12 +92,16 @@
     <!--LIFT-->
 
     <!--LIFT-->
-    <path id="d93bf681-75d4-4a96-903b-c446b66fa56b"
-          fill="none" stroke="blue" stroke-width="6"
-          d="M 1465.33,501.67
-           C 1465.33,501.67 1487.00,597.67 1487.00,597.67" (click)="openMenu($event, itemType.LIFT)" />
-    <circle cx="1465.33" cy="501.67" r="5" fill="black" />
-    <circle cx="1487.00" cy="597.67" r="5" fill="black" />
+    <g>
+      <path id="d93bf681-75d4-4a96-903b-c446b66fa56b"
+            fill="none" stroke="blue" stroke-width="6"
+            d="M 1465.33,501.67
+           C 1465.33,501.67 1487.00,597.67 1487.00,597.67" (click)="openMenu($event, itemType.LIFT)"/>
+      <circle cx="1465.33" cy="501.67" r="5" fill="black" />
+      <circle cx="1487.00" cy="597.67" r="5" fill="black" />
+    </g>
+
+
     <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="1445.25" y="460.25" height="40px" width="40px" />
     <text x="1459.25" y="478.25" fill="white">C</text>
     <!--LIFT-->
@@ -143,7 +147,7 @@
       <span id="zoom-out-description">Zoom out</span>
     </div>
       <div class="sign-out-wrapper" *ngIf="user.isLoggedIn()">
-          <button id="sign-out" class="sign-out"><i class="fa fa-sign-out" aria-hidden="true" (click)="onLogout()"></i></button>
+          <button id="sign-out" class="sign-out" (click)="onLogout()"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
           <span id="sign-out-description">Sign out</span>
       </div>
   </div>
