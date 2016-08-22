@@ -1,14 +1,14 @@
 <left-menu #left_menu xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"></left-menu>
 <div class="img">
   <svg xmlns="http://www.w3.org/2000/svg"
-       width="16.4375in" height="9.27083in"
-       viewBox="0 145 1790 880"
+       width="100%" height="100%"
+       viewBox="10 145 1550 680"
        id="mapSvg">
   <!--4-SLOPE-->
   <g id="mapItems" class="svg-pan-zoom_viewport">
-    <image xlink:href="../../images/bg.jpg" x="0" y="0" height="100%" width="100%" id="mapImage" (click)="onMapClick()"/>
+    <image xlink:href="../../images/bg.jpg" x="-5" y="5" height="880px" width="1590px" id="mapImage" (click)="onMapClick()"/>
     <!--SLOPE-->
-    <path id="Unnamed1"
+    <path id="3c2a0648-38cd-11e4-9a3a-52540021ce28"
           fill="none" stroke="red" stroke-width="4"
           d="M 918.75,406.75
            C 918.75,406.75 928.50,416.50 955.75,423.25
@@ -29,7 +29,7 @@
     <!--SLOPE-->
 
     <!--SLOPE-->
-    <path id="Unnamed2"
+    <path id="913e3b66-25d9-11e3-ae69-52540021ce28"
           fill="none" stroke="red" stroke-width="4"
           d="M 898.12,390.00
            C 898.12,390.00 898.62,381.88 966.25,387.50
@@ -45,7 +45,7 @@
     <!--SLOPE-->
 
     <!--SLOPE-->
-    <path id="Unnamed3"
+    <path id="6abf257c-25d9-11e3-8a0b-52540021ce28"
           fill="none" stroke="red" stroke-width="4"
           d="M 764.00,564.50
            C 764.00,564.50 749.00,560.00 728.50,569.00
@@ -107,26 +107,35 @@
     <!--LIFT-->
 
     <!--LIFT-->
-    <path id="Unnamed4"
+    <path id="2eeb0bb0-9df2-4aa3-9655-7c5338b76bc5"
           fill="none" stroke="blue" stroke-width="6"
           d="M 768.25,571.25
            C 768.25,571.25 94.00,790.67 94.00,790.67" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="768.25" cy="571.25" r="5" fill="black" />
     <circle cx="94.00" cy="790.67" r="5" fill="black" />
     <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="73.50" y="745.50" height="40px" width="40px" />
-    <text x="89.50" y="765.50" fill="white">F</text>
+    <text x="89.50" y="765.50" fill="white">A</text>
     <!--LIFT-->
 
     <!--LIFT-->
     <image class="animated-marker" xlink:href="../../images/marker_blue.png" x="585.50" y="745.50" height="40px" width="40px" style="transform: rotate(-25deg);"/>
     <text x="865.50" y="436.25" fill="white">F</text>
-    <path id="Unnamed5"
+    <path id="d93bf681-75d4-4a96-903b-c446b66fa56b"
           fill="none" stroke="blue" stroke-width="6"
           d="M 896.00,411.25
            C 896.00,411.25 885.50,455.50 885.50,455.50" (click)="openMenu($event, itemType.LIFT)" />
     <circle cx="896.00" cy="411.25" r="5" fill="black" />
     <circle cx="885.50" cy="455.50" r="5" fill="black" />
     <!--LIFT-->
+
+    <!---restuarants/accommodation/ski-schools/parking-->
+    <image class="cursor-pointer" xlink:href="../../images/restuarant.png" x="794.50" y="590.00" height="40px" width="40px"></image>
+    <image class="cursor-pointer" xlink:href="../../images/parking.png" x="700.50" y="615.00" height="40px" width="40px"></image>
+    <image class="cursor-pointer" xlink:href="../../images/accommodation.png" x="840.50" y="560.00" height="40px" width="40px"></image>
+    <image class="cursor-pointer" xlink:href="../../images/accommodation.png" x="790.50" y="460.00" height="40px" width="40px"></image>
+    <image class="cursor-pointer" xlink:href="../../images/skischool.png" x="830.50" y="510.00" height="40px" width="40px"></image>
+    <!---restuarants/accommodation/ski-schools/parking-->
+
 
     <g id="marker" *ngIf="markerAdded">
       <image [attr.x]="elementCx - 20" [attr.y]="elementCy - 50" width="50px" height="50px" xlink:href="../../images/marker.png"/>

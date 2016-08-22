@@ -102,6 +102,9 @@ path:hover{
     text-align: center;
     width: 45px;
 }
+.cursor-pointer{
+    cursor: pointer;
+}
 @keyframes opacity {
     from{
         opacity: 0;
