@@ -10,6 +10,8 @@ import {SlopeLiftService} from "../service/SlopeLiftService";
 import {User} from "../utils/CheckLogin";
 import {Router} from "@angular/router";
 import {Authenticator} from "../utils/Authentificator";
+import {PathService} from "../service/PathService";
+import {Path} from "../domain/Path";
 declare var svgPanZoom:any;
 declare var $:any;
 declare var hammer:any;
@@ -21,14 +23,13 @@ declare var Hammer:any;
     templateUrl:'app/blocks/map_lines.html',
     styleUrls: ['app/blocks/map_lines_style.css'],
     directives: [MenuDirective],
-    providers: [SlopeLiftService, HTTP_PROVIDERS]
+    providers: [SlopeLiftService, PathService, HTTP_PROVIDERS]
 })
 
 export class MapDirective  implements OnInit{
 
     //Getting child(Menu directive)
     @ViewChild('left_menu') menu :MenuDirective;
-    public itemType = ItemType;
     public user = User;
 
     //Used for setting marker position
@@ -37,21 +38,26 @@ export class MapDirective  implements OnInit{
 
     markerAdded:boolean = false;
     ids:Array<string>;
+    myPaths:any;
 
-    constructor(private slopeLiftService: SlopeLiftService, public auth: Authenticator, public router: Router){
+    constructor(private slopeLiftService: SlopeLiftService, private pathService: PathService,
+                private auth: Authenticator, private router: Router){
     }
 
     ngOnInit() {
         this.implementHammerZoomPan();
+        this.setMapObjects();
         this.getIdsFromMap();
-        this.getSpecificLiftsAndSlopes();
     }
 
+
+
     //Method for opening menu. It is sending request to menu method setItemById.
-    openMenu(event: any, item:ItemType){
+    openMenu(event: any, type:string){
         //Passing layerX and layerY of mouse to setMarkerPosition method
         this.setMarkerPosition(event.layerX, event.layerY);
-        switch (item){
+        var itemType : ItemType= <ItemType>ItemType[type];
+        switch (itemType){
             case ItemType.LIFT:
                 //Getting id by method getClickedElementId
                 this.addHighlight(event);
@@ -193,7 +199,15 @@ export class MapDirective  implements OnInit{
         }, false);
     }
 
-    //Getting ids of slopes and lifts from map. Used to sending request to API with these ids
+    //ForkJoin request to service and fill menu arrays
+    setMapObjects(){
+        this.pathService.getAllPaths().subscribe(data => this.myPaths = data);
+        this.slopeLiftService.getSpecificLiftsAndSlopes(this.ids).subscribe(data => {
+            this.menu.myLifts = data[0];
+            this.menu.mySlopes = data[1]
+        });
+    }
+
     getIdsFromMap(){
         var paths = document.getElementsByTagName("path");
         var tempIds = [];
@@ -204,13 +218,6 @@ export class MapDirective  implements OnInit{
         return this.ids;
     }
 
-    //ForkJoin request to service and fill menu arrays
-    getSpecificLiftsAndSlopes(){
-        this.slopeLiftService.getSpecificLiftsAndSlopes(this.ids).subscribe(data => {
-            this.menu.myLifts = data[0];
-            this.menu.mySlopes = data[1]
-        });
-    }
 
     onLogout(){
         this.auth.logout()

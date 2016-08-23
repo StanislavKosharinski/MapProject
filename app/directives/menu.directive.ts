@@ -8,13 +8,15 @@ import {ItemType} from "../enums/ItemType";
 import {MapDirective} from "./map.directive";
 import {User} from "../utils/CheckLogin";
 import {FormGroup, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES} from "@angular/forms";
+import {SlopeLiftService} from "../service/SlopeLiftService";
 
 //Menu directive.
 @Component({
     selector: 'left-menu',
     templateUrl: 'app/blocks/menu_left.html',
     styleUrls: ['app/blocks/menu_left_style.css'],
-    directives: [REACTIVE_FORM_DIRECTIVES]
+    directives: [REACTIVE_FORM_DIRECTIVES],
+    providers: [SlopeLiftService]
 })
 
 export class MenuDirective implements OnInit {
@@ -40,11 +42,20 @@ export class MenuDirective implements OnInit {
 
 
 
-    constructor(@Inject(forwardRef(() => MapDirective)) private map: MapDirective, private fb: FormBuilder) {
+    constructor(@Inject(forwardRef(() => MapDirective)) private map: MapDirective, private fb: FormBuilder, private slopeLiftService:SlopeLiftService) {
     }
 
     ngOnInit() {
+        this.getSpecificLiftsSlopes();
+    }
 
+
+
+    getSpecificLiftsSlopes(){
+        this.slopeLiftService.getSpecificLiftsAndSlopes(null).subscribe(data => {
+            this.myLifts = data[0];
+            this.mySlopes = data[1]
+        });
     }
 
     //Filling objects from array
