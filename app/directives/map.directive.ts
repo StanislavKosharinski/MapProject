@@ -11,7 +11,7 @@ import {User} from "../utils/CheckLogin";
 import {Router} from "@angular/router";
 import {Authenticator} from "../utils/Authentificator";
 import {PathService} from "../service/PathService";
-import {Path} from "../domain/Path";
+import {AdminMenuDirective} from "./admin.menu.directive";
 declare var svgPanZoom:any;
 declare var $:any;
 declare var hammer:any;
@@ -22,7 +22,7 @@ declare var Hammer:any;
     selector: 'map-lines',
     templateUrl:'app/blocks/map_lines.html',
     styleUrls: ['app/blocks/map_lines_style.css'],
-    directives: [MenuDirective],
+    directives: [MenuDirective, AdminMenuDirective],
     providers: [SlopeLiftService, PathService, HTTP_PROVIDERS]
 })
 
