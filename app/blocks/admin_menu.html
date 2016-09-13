@@ -1,6 +1,45 @@
 <tabs>
     <tab [tabTitle]="'Add path'">
-
+        <div class="scroll-fixer">
+        <div class="sidebar">
+            <div class="image">
+            </div>
+            <div class="text">
+                <form>
+                    <div class="title main-title">PATH</div>
+                    <div class="title">Path type</div>
+                    <input id="path-type" type="text" placeholder="Path type ( slope/lift )" value="slope" required>
+                    <div class="title">Path ID</div>
+                    <input type="text" placeholder="Path ID" required>
+                    <div class="title">Path coordinates</div>
+                    <input type="text" placeholder="Coordinates" required>
+                    <div class="title">Stroke</div>
+                    <input class="color" type="text" placeholder="Line color" required>
+                    <input type="color">
+                    <div class="title">Stroke width</div>
+                    <input type="text" placeholder="Line width" value="4" required>
+                    <div class="title main-title">CIRCLES</div>
+                    <div class="title">Coordinates</div>
+                    <div class="left-side">
+                        <div class="title">Start</div>
+                        <input type="text" placeholder="CX" required>
+                        <input type="text" placeholder="CY" required>
+                    </div>
+                    <div class="right-side">
+                        <div class="title">End</div>
+                        <input type="text" placeholder="CX" required>
+                        <input type="text" placeholder="CY" required>
+                    </div>
+                    <div class="title">Circle radius</div>
+                    <input type="text" placeholder="Circle radius" value="5" required>
+                    <div class="title">Circle fill</div>
+                    <input class="color" type="text" placeholder="Circle color" required>
+                    <input type="color">
+                    <button type="submit">Go!</button>
+                </form>
+            </div>
+        </div>
+            </div>
     </tab>
     <tab [tabTitle]="'Add map item'">
 

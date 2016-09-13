@@ -1,0 +1,204 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html,
+body{
+    height: 100%;
+    width: 100%;
+}
+
+form{
+    text-align: center;
+}
+
+.title {
+    position:relative;
+    font-family: 'Myriad Pro','Helvetica Neue', Helvetica;
+    font-weight:bold;
+    font-size: 18px;
+    text-shadow: 0px 1px 2px rgba(255,255,255,.5);
+    color: #444;
+    text-align:center;
+}
+
+.sidebar{
+    display: block;
+    height: 100%;
+    width: 352px;
+    background: rgba(206, 205, 205, 1);
+}
+
+.image{
+    position: relative;
+    background: rgba(206, 205, 205, 1) url("/images/modal_img.png") center;
+    height: 200px;
+    background-size: cover;
+}
+
+.text{
+    position: relative;
+    background-color: rgba(206, 205, 205, 1);
+    padding-bottom: 70px;
+}
+
+.scroll-fixer{
+    overflow: scroll;
+}
+
+input {
+    display: block;
+    font-size: 14px;
+    width: 78%;
+    margin: 10px auto;
+    padding: 10px 8px 10px 8px;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0, .55), 0px 1px 1px rgba(255,255,255,.5);
+    border: 1px solid #666;
+}
+
+input {
+    opacity: 0.5;
+}
+
+input:hover,
+input:focus {
+    opacity: .7;
+    color:#08c;
+    border: 1px solid #08c;
+    box-shadow: 0px 1px 0px rgba(255,255,255,.25),inset 0px 3px 6px rgba(0,0,0,.25);
+}
+
+input[type="color"]{
+    display: inline-block;
+    padding: 6px;
+    width: 10%;
+    padding-bottom: 8px;
+    margin-left: -4px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    background: white;
+    height: 38px;
+    padding-top: 5px;
+}
+
+.color{
+    display: inline-block;
+    width: 65%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 15px rgba(0,246,255,.5);
+    border: 1px solid #08c;
+    outline: none;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    appearance: none;
+    opacity: .99;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    outline: none;
+    border-radius: 50%;
+    background: #08c;
+    box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 6px rgba(0,246,255,.5);
+    border: 1px solid #0a5378;
+    color: #eee;
+    cursor: pointer;
+    text-shadow:0px -1px 0px rgba(0,0,0,.5);
+}
+
+button[type="submit"]:hover {
+    background: #08c;
+    border: 1px solid #0a5378;
+    box-shadow: inset 0px 3px 16px rgba(0,0,0,.25),0px 1px 10px rgba(255,255,255,.5),inset 0px -1px 2px rgba(255,255,255,.35);
+    text-shadow:0px 1px 1px rgba(0,0,0,.65);
+    -webkit-transition: all 0.40s ease-out;
+    transition: all 0.40s ease-out;
+}
+
+
+.left-side,
+.right-side{
+    margin-top: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 49%;
+}
+
+.left-side input,
+.right-side input{
+    width: 95px;
+}
+
+.left-side .title,
+.right-side .title{
+    font-size: 15px;
+}
+
+#path-type{
+    text-transform: uppercase;
+}
+
+.main-title{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    box-shadow: inset 0px 3px 16px rgba(0,0,0,.25),0px 1px 10px rgba(255,255,255,.5),inset 0px -1px 2px rgba(255,255,255,.35);
+    background-color: rgba(128, 128, 128, 0.25);
+}
+
+.coordinates-and-width{
+    display: inline-block;
+    width: 100px;
+}
+
+@-moz-document url-prefix(){
+    input[type="color"]{
+        display: inline-block;
+        padding: 6px;
+        width: 10%;
+        padding-bottom: 13px;
+        margin-left: -6px;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+        background: white;
+        padding-top: 10px;
+        height: 41px;
+    }
+    input[type ="color"]{
+        width: 13%;
+    }
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+.menu:hover .scroll-fixer {
+    display: none;
+}
+
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rgb(206, 205, 205);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #757575;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0,0,0,0.4);
+}

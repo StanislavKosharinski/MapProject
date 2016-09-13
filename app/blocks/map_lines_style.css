@@ -19,6 +19,7 @@ path:hover{
     position: absolute;
     right: 3px;
     padding: 5px;
+    top: -40px;
 }
 .controls button{
     margin:0 auto;
